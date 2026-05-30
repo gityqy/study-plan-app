@@ -223,16 +223,25 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
         <input type="text" id="loginName" placeholder="输入账户名（注册时设置的名称）" autocomplete="off">
       </div>
       <div class="form-group" id="loginPwdGroup">
-        <label>登录密码</label>
+        <label>登录密码 <span style="color:var(--danger);font-size:12px;">* 必填</span></label>
         <input type="password" id="loginPwd" placeholder="输入密码（至少4位）" autocomplete="off">
       </div>
+      <!-- Token field hidden by default, shown only when account has no token yet -->
       <div class="form-group hidden" id="loginTokenGroup">
-        <label>GitHub Token（首次登录需填写）</label>
+        <label>GitHub Token（首次使用云同步需要）</label>
         <input type="password" id="loginToken" placeholder="ghp_xxxxxxxx" autocomplete="off">
-        <div class="field-hint">Token 用于云端加密同步。可在 GitHub → Settings → Developer settings → Personal access tokens 生成（勾选 gist，30天到期）</div>
+        <div class="field-hint">Token 用于云端加密同步。可在 GitHub → Settings → Developer settings → Personal access tokens 生成（勾选 gist，30天到期）。也可登录后在「⚙️ 账户设置」里填写。</div>
       </div>
       <button class="auth-btn" id="loginBtn" onclick="doLogin()">登录</button>
       <div class="auth-hint" id="loginHint"></div>
+      <!-- Banner: no token yet for this account -->
+      <div class="auth-hint err hidden" id="tokenSetupBanner" style="margin-top:8px;padding:10px 12px;background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.3);border-radius:10px;font-size:13px;text-align:left;">
+        ⚠️ <strong>首次登录成功！</strong>此账户尚未设置 GitHub Token，登录后请前往「⚙️ 账户设置 → 更新 Token」完成云同步配置。
+      </div>
+      <!-- Banner: token is empty, cloud sync won't work -->
+      <div class="auth-hint hidden" id="noTokenBanner" style="margin-top:8px;padding:10px 12px;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.3);border-radius:10px;font-size:13px;text-align:left;color:var(--warning);">
+        ℹ️ 此账户尚未设置 GitHub Token，云同步不可用。登录后去「⚙️ 账户设置 → 更新 Token」填写。
+      </div>
     </div>
 
     <!-- Register panel -->
@@ -501,38 +510,45 @@ async function doLogin(){
   const token=document.getElementById('loginToken').value.trim();
   const hint=document.getElementById('loginHint');
   const btn=document.getElementById('loginBtn');
+  const noTokenBanner=document.getElementById('noTokenBanner');
+  const tokenSetupBanner=document.getElementById('tokenSetupBanner');
+  noTokenBanner.classList.add('hidden');
+  tokenSetupBanner.classList.add('hidden');
+
   if(!name){hint.textContent='⚠️ 请输入账户名';hint.className='auth-hint err';return;}
+  if(!pwd){hint.textContent='⚠️ 请输入密码';hint.className='auth-hint err';return;}
+  if(pwd.length<4){hint.textContent='⚠️ 密码至少4位';hint.className='auth-hint err';return;}
+
   accounts=getAccounts();
   let acc=accounts.find(a=>a.name===name);
-  // If account exists, use it. Otherwise try quick login by uid
   if(!acc)acc=accounts.find(a=>a.uid===name);
   if(!acc){hint.textContent='❌ 账户不存在，请先注册';hint.className='auth-hint err';return;}
-  currentUser=acc;
-  // Has token+password
-  if(acc.token&&acc.pwdHash){
-    if(!pwd){hint.textContent='⚠️ 请输入密码';hint.className='auth-hint err';return;}
+
+  // Verify password (always required)
+  if(acc.pwdHash){
     const h=await hashPwd(pwd);
     if(h!==acc.pwdHash){hint.textContent='❌ 密码错误';hint.className='auth-hint err';return;}
-  }
-  // Has token only (no password) - need token to verify
-  else if(acc.token&&!acc.pwdHash){
-    if(!pwd){hint.textContent='⚠️ 请输入密码';hint.className='auth-hint err';return;}
-    const h=await hashPwd(pwd);
-    if(h!==acc.pwdHash){hint.textContent='❌ 密码错误';hint.className='auth-hint err';return;}
-  }
-  // No token yet - need to set token and optionally password
-  else {
-    if(!token){hint.textContent='⚠️ 首次登录请填写 GitHub Token';hint.className='auth-hint err';return;}
-    if(!token.startsWith('ghp_')){hint.textContent='⚠️ Token格式错误，应以 ghp_ 开头';hint.className='auth-hint err';return;}
-    if(pwd&&pwd.length<4){hint.textContent='⚠️ 密码至少4位';hint.className='auth-hint err';return;}
-    acc.token=token;
-    if(pwd){acc.pwdHash=await hashPwd(pwd);currentPwdHash=acc.pwdHash;}
+  } else {
+    // No password set yet - set it now on first login
+    acc.pwdHash=await hashPwd(pwd);
     saveAccounts(accounts);
   }
+
+  currentUser=acc;currentPwdHash=acc.pwdHash||'';
   setLastUID(acc.uid);
-  hint.textContent='✅ 登录成功，加载中...';hint.className='auth-hint ok';
-  btn.disabled=true;
-  initApp();
+
+  // If no token set, show banner to set up later in settings
+  if(!acc.token){
+    hint.textContent='✅ 登录成功！';hint.className='auth-hint ok';
+    btn.disabled=true;
+    initApp();
+    // After initApp shows the app, immediately show settings hint
+    setTimeout(()=>{noTokenBanner.classList.remove('hidden');},500);
+  } else {
+    hint.textContent='✅ 登录成功，加载中...';hint.className='auth-hint ok';
+    btn.disabled=true;
+    initApp();
+  }
 }
 
 async function doReg(){
