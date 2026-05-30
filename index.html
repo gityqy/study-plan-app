@@ -11,60 +11,59 @@
   --bg:#0f0e17;--surface:#1a1930;--surface2:#252440;--surface3:#2e2e54;
   --text:#e2e8f0;--muted:#94a3b8;--border:#3730a3;--border-light:#4f46e533;
   --success:#10b981;--warning:#f59e0b;--danger:#ef4444;--info:#3b82f6;
-  --purple:#a855f7;--glass:rgba(255,255,255,0.06);
+  --glass:rgba(255,255,255,0.06);
   --fs:16px;--radius:12px;--shadow:0 8px 32px rgba(0,0,0,0.4);
 }
 @keyframes modalIn{from{opacity:0;transform:scale(0.92) translateY(-20px);}to{opacity:1;transform:scale(1) translateY(0);}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.4;}}
-@keyframes spin{to{transform:rotate(360deg);}}
 @keyframes slideIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);font-size:var(--fs);min-height:100vh;overflow-x:hidden;}
 .hidden{display:none!important;}
 /* Auth Screen */
 .auth-wrap{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:var(--bg);z-index:99999;padding:20px;}
-.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:40px 48px;max-width:480px;width:100%;text-align:center;animation:modalIn 0.5s ease-out;}
-.auth-card h1{font-size:28px;margin-bottom:8px;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.auth-card p{color:var(--muted);font-size:14px;margin-bottom:28px;}
+.auth-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:40px 48px;max-width:500px;width:100%;text-align:center;animation:modalIn 0.5s ease-out;}
+.auth-card h1{font-size:26px;margin-bottom:6px;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.auth-card .auth-sub{margin-bottom:24px;font-size:13px;color:var(--muted);}
 .auth-tabs{display:flex;gap:8px;margin-bottom:24px;background:var(--surface2);border-radius:12px;padding:4px;}
-.auth-tab{flex:1;padding:10px;border:none;background:none;color:var(--muted);cursor:pointer;border-radius:10px;font-size:15px;font-family:inherit;transition:all 0.2s;font-weight:600;}
+.auth-tab{flex:1;padding:10px;border:none;background:none;color:var(--muted);cursor:pointer;border-radius:10px;font-size:14px;font-family:inherit;transition:all 0.2s;font-weight:600;}
 .auth-tab.active{background:var(--primary);color:#fff;}
-.auth-form{display:flex;flex-direction:column;gap:12px;text-align:left;}
-.auth-form label{font-size:13px;color:var(--muted);margin-bottom:2px;display:block;}
-.auth-form input, .auth-form select{padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);font-size:15px;font-family:inherit;transition:all 0.2s;width:100%;}
-.auth-form input:focus,.auth-form select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.2);}
-.auth-form input::placeholder{color:var(--muted);opacity:0.6;}
-.auth-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:8px;}
+.form-group{margin-bottom:14px;text-align:left;}
+.form-group label{display:block;font-size:13px;color:var(--muted);margin-bottom:5px;}
+.form-group input,.form-group select{padding:11px 14px;border:1.5px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;transition:all 0.2s;width:100%;}
+.form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(99,102,241,0.2);}
+.form-group input::placeholder{color:var(--muted);opacity:0.6;}
+.form-group .field-hint{font-size:12px;color:var(--muted);background:var(--surface2);padding:8px 12px;border-radius:8px;margin-top:6px;line-height:1.6;}
+.auth-btn{width:100%;padding:14px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--primary),#7c3aed);color:#fff;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;transition:all 0.2s;margin-top:8px;}
 .auth-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,0.35);}
-.auth-btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
-.auth-hint{font-size:13px;color:var(--danger);margin-top:8px;min-height:18px;}
-.auth-switch{font-size:13px;color:var(--muted);margin-top:20px;}
-.auth-switch a{color:var(--primary-light);cursor:pointer;text-decoration:underline;}
-.token-note{font-size:12px;color:var(--muted);background:var(--surface2);padding:10px 12px;border-radius:8px;margin-top:4px;line-height:1.6;}
-.acct-list{margin-top:16px;text-align:left;}
-.acct-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border-radius:10px;margin-bottom:8px;cursor:pointer;border:1.5px solid transparent;transition:all 0.2s;}
-.acct-item:hover{border-color:var(--primary);}
-.acct-item.selected{border-color:var(--primary);background:var(--surface3);}
-.acct-item .uname{font-size:15px;font-weight:600;}
-.acct-item .utype{font-size:12px;color:var(--muted);}
-.acct-item .udel{color:var(--danger);font-size:12px;margin-left:auto;padding:4px 8px;border-radius:6px;transition:all 0.2s;}
-.acct-item .udel:hover{background:rgba(239,68,68,0.2);}
-/* Main app */
+.auth-btn:disabled{opacity:0.5;cursor:not-allowed;transform:none;}
+.auth-hint{font-size:13px;margin-top:10px;min-height:20px;text-align:left;padding:0 4px;}
+.auth-hint.ok{color:var(--success);}
+.auth-hint.err{color:var(--danger);}
+.auth-divider{margin:20px 0;display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;}
+.auth-divider::before,.auth-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+.quick-login{display:flex;flex-direction:column;gap:8px;margin:16px 0;}
+.ql-item{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface2);border-radius:10px;border:1.5px solid transparent;cursor:pointer;transition:all 0.2s;text-align:left;}
+.ql-item:hover{border-color:var(--primary);background:var(--surface3);}
+.ql-item.selected{border-color:var(--primary);background:var(--primary);color:#fff;}
+.ql-item .qli-name{font-size:14px;font-weight:600;}
+.ql-item .qli-hint{font-size:12px;opacity:0.7;}
+.ql-item .qli-arrow{margin-left:auto;font-size:16px;opacity:0.5;}
+/* Token warn */
+.token-warn{position:fixed;top:0;left:0;right:0;background:rgba(239,68,68,0.95);color:#fff;padding:10px 20px;text-align:center;font-size:14px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:8px;}
+/* Main layout */
 .app-wrap{display:flex;min-height:100vh;}
-/* Sidebar */
 .sidebar{width:64px;background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;align-items:center;padding:16px 0;gap:8px;position:fixed;top:0;left:0;height:100vh;z-index:100;}
-.sidebar .s-btn{width:44px;height:44px;border-radius:12px;border:none;background:var(--surface2);color:var(--muted);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;position:relative;}
-.sidebar .s-btn:hover{background:var(--primary);color:#fff;}
-.sidebar .s-btn.active{background:var(--primary);color:#fff;}
-.sidebar .s-btn .s-dot{position:absolute;top:8px;right:8px;width:8px;height:8px;border-radius:50%;background:var(--warning);}
 .sidebar .s-logo{font-size:22px;margin-bottom:12px;}
+.s-btn{width:44px;height:44px;border-radius:12px;border:none;background:var(--surface2);color:var(--muted);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.s-btn:hover,.s-btn.active{background:var(--primary);color:#fff;}
 /* Header */
-.app-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:50;margin-left:64px;}
+.app-header{background:var(--surface);border-bottom:1px solid var(--border);padding:12px 24px;display:flex;align-items:center;gap:16px;margin-left:64px;}
 .header-top{flex:1;}
-.app-title{font-size:20px;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:1px;}
+.app-title{font-size:20px;font-weight:800;background:linear-gradient(135deg,#818cf8,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .header-sub{font-size:12px;color:var(--muted);margin-top:2px;}
 .header-actions{display:flex;gap:6px;flex-wrap:wrap;align-items:center;}
-.hbtn{border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-family:inherit;cursor:pointer;transition:all 0.2s;font-weight:600;display:inline-flex;align-items:center;gap:6px;}
+.hbtn{border:none;border-radius:10px;padding:8px 14px;font-size:13px;font-family:inherit;cursor:pointer;transition:all 0.2s;font-weight:600;display:inline-flex;align-items:center;gap:5px;}
 .hb-cyan{background:rgba(6,182,212,0.15);color:#22d3ee;}
 .hb-green{background:rgba(16,185,129,0.15);color:#34d399;}
 .hb-blue{background:rgba(59,130,246,0.15);color:#60a5fa;}
@@ -72,11 +71,10 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
 .hb-orange{background:rgba(249,115,22,0.15);color:#fb923c;}
 .hb-red{background:rgba(239,68,68,0.15);color:#f87171;}
 .hb-glass{background:var(--glass);color:var(--text);border:1px solid var(--border);}
-.hbtn:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-.hbtn:active{transform:translateY(0);}
+.hbtn:hover{transform:translateY(-1px);}
 /* Clock bar */
 .clock-bar{background:var(--surface2);padding:8px 24px;display:flex;align-items:center;gap:20px;margin-left:64px;border-bottom:1px solid var(--border);}
-.clock{font-size:22px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums;}
+.clock{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;}
 .clock-date{font-size:12px;color:var(--muted);margin-top:2px;}
 .alarm-status{display:flex;align-items:center;gap:8px;font-size:13px;}
 .alarm-dot{width:10px;height:10px;border-radius:50%;background:var(--success);}
@@ -89,47 +87,39 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
 .sync-dot.syncing{background:var(--warning);animation:pulse 1s infinite;}
 .sync-dot.error{background:var(--danger);}
 .sync-label{font-size:13px;color:var(--muted);}
-/* Main */
+/* Main content */
 .main-content{margin-left:64px;flex:1;padding:16px 24px;max-width:1400px;}
 /* Day tabs */
 .day-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
 .day-tab{padding:10px 20px;border:none;border-radius:12px;background:var(--surface2);color:var(--muted);cursor:pointer;font-size:14px;font-family:inherit;font-weight:600;transition:all 0.2s;}
-.day-tab.active{background:var(--primary);color:#fff;}
-.day-tab:hover:not(.active){background:var(--surface3);}
+.day-tab.active,.day-tab:hover:not(.active){background:var(--primary);color:#fff;}
 /* Toolbar */
 .toolbar{display:flex;gap:10px;align-items:center;margin-bottom:14px;flex-wrap:wrap;}
 .btn{padding:9px 18px;border:none;border-radius:10px;cursor:pointer;font-size:14px;font-family:inherit;font-weight:600;transition:all 0.2s;}
 .btn-p{background:var(--primary);color:#fff;}
 .btn-p:hover{background:var(--primary-dark);transform:translateY(-1px);}
 .btn-s{background:var(--surface3);color:var(--text);}
-.btn-s:hover{background:var(--surface3);border-color:var(--primary);}
-.btn-o{background:rgba(249,115,22,0.15);color:#fb923c;}
-.btn-d{background:rgba(239,68,68,0.15);color:#f87171;}
-.btn-blue{background:rgba(59,130,246,0.15);color:#60a5fa;}
 .spacer{flex:1;}
-/* Plan table */
-.plan-phase{margin-bottom:24px;animation:slideIn 0.3s ease-out;}
+/* Plan */
+.plan-phase{margin-bottom:24px;animation:slideIn 0.3s;}
 .phase-header{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
 .phase-title{font-size:15px;font-weight:700;color:var(--primary-light);display:flex;align-items:center;gap:8px;}
 .phase-name-input{background:transparent;border:none;border-bottom:1.5px solid var(--primary);color:var(--text);font-size:15px;font-family:inherit;font-weight:700;padding:2px 6px;width:200px;}
 .phase-name-input:focus{outline:none;}
-.phase-actions{display:flex;gap:6px;}
 .phase-del{border:none;background:rgba(239,68,68,0.15);color:#f87171;padding:6px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s;}
 .phase-del:hover{background:rgba(239,68,68,0.3);}
 .plan-table{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--border);}
 .plan-table table{width:100%;border-collapse:collapse;min-width:600px;}
-.plan-table th{background:var(--surface2);padding:10px 12px;text-align:left;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;cursor:pointer;user-select:none;position:sticky;top:0;z-index:2;}
+.plan-table th{background:var(--surface2);padding:10px 12px;text-align:left;font-size:13px;font-weight:700;color:var(--muted);white-space:nowrap;cursor:pointer;position:sticky;top:0;z-index:2;}
 .plan-table th:hover{color:var(--text);}
 .plan-table td{padding:8px 12px;border-top:1px solid var(--border-light);vertical-align:middle;}
 .plan-table tr:hover td{background:rgba(255,255,255,0.02);}
-.plan-table tr{transition:background 0.15s;}
 .check-cell{text-align:center;}
-.chk-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);cursor:pointer;appearance:none;-webkit-appearance:none;background:var(--surface2);display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;vertical-align:middle;}
+.chk-box{width:22px;height:22px;border-radius:6px;border:2px solid var(--border);cursor:pointer;appearance:none;-webkit-appearance:none;background:var(--surface2);display:inline-flex;align-items:center;justify-content:center;transition:all 0.2s;}
 .chk-box:checked{background:var(--primary);border-color:var(--primary);}
 .chk-box:checked::after{content:'✓';color:#fff;font-size:14px;font-weight:700;}
 .td-input{width:100%;min-width:80px;padding:8px 10px;background:var(--surface2);border:1.5px solid transparent;border-radius:8px;color:var(--text);font-family:inherit;font-size:14px;transition:all 0.2s;}
 .td-input:focus{outline:none;border-color:var(--primary);background:var(--surface3);}
-.td-input.w-full{width:100%;}
 .time-input{width:90px;padding:8px 10px;background:var(--surface2);border:1.5px solid transparent;border-radius:8px;color:var(--text);font-family:inherit;font-size:14px;transition:all 0.2s;text-align:center;}
 .time-input:focus{outline:none;border-color:var(--primary);}
 .del-btn{border:none;background:rgba(239,68,68,0.12);color:#f87171;padding:6px 10px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s;width:36px;}
@@ -137,10 +127,45 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
 .dur-cell{color:var(--muted);font-size:13px;text-align:center;}
 /* Modals */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:flex;justify-content:center;align-items:center;padding:20px;backdrop-filter:blur(4px);animation:fadeIn 0.2s;}
-.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;max-width:900px;width:100%;max-height:85vh;overflow-y:auto;animation:modalIn 0.35s ease-out;position:relative;}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:32px;max-width:900px;width:100%;max-height:85vh;overflow-y:auto;animation:modalIn 0.35s;position:relative;}
 .modal h2{font-size:20px;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
 .modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;padding:4px;line-height:1;}
 .modal-close:hover{color:var(--text);}
+/* Settings */
+.settings-group{background:var(--surface2);border-radius:14px;padding:16px;margin-bottom:14px;}
+.settings-group h3{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.set-row{display:flex;align-items:center;gap:10px;padding:8px 0;}
+.set-label{font-size:14px;color:var(--muted);min-width:110px;}
+.set-value{flex:1;}
+.set-input{width:100%;padding:8px 12px;background:var(--surface3);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:14px;}
+.set-input:focus{outline:none;border-color:var(--primary);}
+/* Column manager */
+.col-mgr-table{width:100%;border-collapse:collapse;}
+.col-mgr-table th{text-align:left;font-size:13px;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--border);}
+.col-mgr-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);vertical-align:middle;}
+.col-mgr-table tr:hover td{background:rgba(255,255,255,0.03);}
+/* User chip */
+.user-switcher{position:fixed;top:16px;right:16px;z-index:200;}
+#userChip{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s;}
+#userChip:hover{background:var(--surface2);}
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);color:var(--text);padding:12px 24px;border-radius:12px;font-size:14px;z-index:99999;box-shadow:var(--shadow);animation:slideIn 0.3s;white-space:nowrap;}
+.toast.error{border-color:var(--danger);color:#f87171;}
+/* Font control */
+.font-ctl{display:flex;align-items:center;gap:4px;}
+.font-ctl button{width:28px;height:28px;border:none;border-radius:6px;background:var(--surface3);color:var(--text);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;}
+.font-ctl button:hover{background:var(--primary);}
+/* Volume */
+.vol-ctl{display:flex;align-items:center;gap:6px;font-size:14px;}
+.vol-ctl input{width:70px;height:4px;appearance:none;-webkit-appearance:none;background:var(--surface3);border-radius:4px;outline:none;}
+.vol-ctl input::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--primary);cursor:pointer;}
+/* Switch */
+.switch{position:relative;width:36px;height:20px;display:inline-block;}
+.switch input{opacity:0;width:0;height:0;}
+.slider{position:absolute;inset:0;border-radius:20px;background:var(--surface3);cursor:pointer;transition:all 0.3s;}
+.slider::before{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:all 0.3s;}
+.switch input:checked+.slider{background:var(--primary);}
+.switch input:checked+.slider::before{transform:translateX(16px);}
 /* History */
 .history-list{max-height:400px;overflow-y:auto;}
 .hist-item{display:flex;gap:12px;padding:12px;border-bottom:1px solid var(--border-light);align-items:flex-start;}
@@ -148,155 +173,93 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
 .hist-date{font-size:13px;color:var(--muted);min-width:80px;}
 .hist-day{font-size:12px;color:var(--primary-light);}
 .hist-preview{font-size:14px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.hist-stats{font-size:12px;color:var(--success);white-space:nowrap;}
 /* Stats */
-.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:20px;}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px;}
 .stat-card{background:var(--surface2);border-radius:14px;padding:16px;text-align:center;}
-.stat-card .sc-num{font-size:32px;font-weight:800;color:var(--primary-light);}
+.stat-card .sc-num{font-size:30px;font-weight:800;color:var(--primary-light);}
 .stat-card .sc-lbl{font-size:12px;color:var(--muted);margin-top:4px;}
-.stat-chart{background:var(--surface2);border-radius:14px;padding:16px;}
-.stat-row{display:flex;justify-content:space-between;padding:6px 0;font-size:14px;border-bottom:1px solid var(--border-light);}
-.stat-row .sl{color:var(--muted);} .stat-row .sr{font-weight:600;}
-/* Sync modal */
-.sync-section{background:var(--surface2);border-radius:14px;padding:16px;margin-bottom:14px;}
-.sync-section h3{font-size:15px;margin-bottom:8px;}
-.sync-section p{font-size:13px;color:var(--muted);margin-bottom:12px;}
-.sync-code-box{display:flex;gap:8px;margin:12px 0;}
-.sync-code-box input{flex:1;padding:10px 14px;background:var(--surface3);border:1.5px solid var(--border);border-radius:10px;color:var(--text);font-family:monospace;font-size:14px;}
-.connected-info{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.3);border-radius:12px;padding:14px;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.ci-icon{font-size:24px;}
-.ci-info{font-size:13px;}
-.ci-info div:first-child{font-weight:700;margin-bottom:2px;}
-/* Column manager */
-.col-mgr-table{width:100%;border-collapse:collapse;}
-.col-mgr-table th{text-align:left;font-size:13px;color:var(--muted);padding:10px 12px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);}
-.col-mgr-table td{padding:10px 12px;border-bottom:1px solid var(--border-light);vertical-align:middle;}
-.col-mgr-table tr:hover td{background:rgba(255,255,255,0.03);}
-/* Settings */
-.settings-group{background:var(--surface2);border-radius:14px;padding:16px;margin-bottom:14px;}
-.settings-group h3{font-size:15px;margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--border);}
-.set-row{display:flex;align-items:center;gap:10px;padding:8px 0;}
-.set-label{font-size:14px;color:var(--muted);min-width:120px;}
-.set-value{flex:1;}
-.set-input{width:100%;padding:8px 12px;background:var(--surface3);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:inherit;font-size:14px;}
-.set-input:focus{outline:none;border-color:var(--primary);}
-/* User switcher */
-.user-switcher{position:fixed;top:16px;right:16px;z-index:200;}
-#userChip{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--surface);border:1px solid var(--border);border-radius:20px;cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.2s;}
-#userChip:hover{background:var(--surface2);}
-/* Toast */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--surface);border:1px solid var(--border);color:var(--text);padding:12px 24px;border-radius:12px;font-size:14px;z-index:99999;box-shadow:var(--shadow);animation:slideIn 0.3s ease-out;white-space:nowrap;}
-.toast.error{border-color:var(--danger);color:#f87171;}
 /* Resize handle */
 .resize-handle{position:absolute;right:0;top:0;bottom:0;width:6px;cursor:col-resize;background:transparent;transition:background 0.2s;}
-.resize-handle:hover,.resizing .resize-handle{background:var(--primary);}
-/* Font control */
-.font-ctl{display:flex;align-items:center;gap:4px;}
-.font-ctl button{width:28px;height:28px;border:none;border-radius:6px;background:var(--surface3);color:var(--text);cursor:pointer;font-size:12px;font-weight:700;font-family:inherit;transition:all 0.15s;}
-.font-ctl button:hover{background:var(--primary);}
-/* Volume */
-.vol-ctl{display:flex;align-items:center;gap:6px;font-size:14px;}
-.vol-ctl input{width:70px;height:4px;appearance:none;-webkit-appearance:none;background:var(--surface3);border-radius:4px;outline:none;}
-.vol-ctl input::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--primary);cursor:pointer;}
-/* Switch */
-.switch{position:relative;width:36px;height:20px;}
-.switch input{opacity:0;width:0;height:0;}
-.slider{position:absolute;inset:0;border-radius:20px;background:var(--surface3);cursor:pointer;transition:all 0.3s;}
-.slider::before{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:all 0.3s;}
-.switch input:checked+.slider{background:var(--primary);}
-.switch input:checked+.slider::before{transform:translateX(16px);}
-/* Alarm dot */
-.autosave-dot{width:8px;height:8px;border-radius:50%;background:var(--success);display:inline-block;}
-/* Token expired warning */
-.token-warn{position:fixed;top:0;left:0;right:0;background:rgba(239,68,68,0.95);color:#fff;padding:10px 20px;text-align:center;font-size:14px;z-index:9999;display:flex;align-items:center;justify-content:center;gap:8px;}
+.resize-handle:hover{background:var(--primary);}
 /* Responsive */
 @media(max-width:768px){
-  .sidebar{width:52px;padding:12px 0;}
+  .sidebar{width:52px;}
   .main-content{margin-left:52px;padding:12px 16px;}
-  .app-header{margin-left:52px;padding:10px 16px;}
-  .clock-bar{margin-left:52px;padding:6px 16px;}
-  .header-actions{flex-wrap:wrap;}
-  .modal{padding:20px;}
-  .hbtn{font-size:12px;padding:7px 10px;}
+  .app-header,.clock-bar{margin-left:52px;padding:10px 16px;}
+  .auth-card{padding:28px 24px;}
 }
 @media(max-width:480px){
-  .sidebar{width:0;display:none;}
+  .sidebar{display:none;}
   .main-content,.app-header,.clock-bar{margin-left:0!important;}
 }
 </style>
 </head>
 <body>
 
-<!-- Token expired warning banner -->
+<!-- Token expired banner -->
 <div class="token-warn hidden" id="tokenWarn">
-  ⚠️ GitHub Token 即将过期（<span id="tokenDaysLeft">5</span> 天），
-  请前往 设置→账户 重新生成并更新！
+  ⚠️ GitHub Token 即将在 <span id="tokenDaysLeft">5</span> 天后过期，请前往「⚙️ 账户设置 → GitHub Token」更新！
 </div>
 
 <!-- Auth screen -->
 <div class="auth-wrap" id="authWrap">
   <div class="auth-card">
     <h1>📚 学习计划助手</h1>
-    <p id="authDesc">多账户 · 本地存储 · 云端加密同步</p>
+    <p class="auth-sub">多账户 · 本地存储 · 云端加密同步</p>
+
     <div class="auth-tabs">
       <button class="auth-tab active" id="tabLogin" onclick="showAuthTab('login')">登录</button>
-      <button class="auth-tab" id="tabReg" onclick="showAuthTab('reg')">注册账户</button>
+      <button class="auth-tab" id="tabReg" onclick="showAuthTab('reg')">注册新账户</button>
     </div>
-    <!-- Login form -->
-    <div id="loginForm">
-      <div class="auth-form">
-        <div>
-          <label>选择账户</label>
-          <select id="selAcct" onchange="onAcctSelect(this.value)" style="padding:12px 16px;border:1.5px solid var(--border);border-radius:10px;background:var(--surface2);color:var(--text);font-size:15px;font-family:inherit;width:100%;">
-            <option value="">-- 请选择 --</option>
-          </select>
-        </div>
-        <div id="loginPwdRow">
-          <label>密码</label>
-          <input type="password" id="loginPwd" placeholder="输入密码" autocomplete="off">
-        </div>
-        <div id="loginTokenRow" class="hidden">
-          <label>GitHub Token</label>
-          <input type="password" id="loginToken" placeholder="ghp_xxxx" autocomplete="off">
-          <div class="token-note">Token 用于加密同步，可在 GitHub Settings → Developer settings → Personal access tokens 生成（30天到期）</div>
-        </div>
-        <button class="auth-btn" id="loginBtn" onclick="doLogin()">登录</button>
-        <div class="auth-hint" id="loginHint"></div>
-        <div class="auth-switch">还没有账户？<a onclick="showAuthTab('reg')">去注册</a></div>
+
+    <!-- Login panel -->
+    <div id="loginPanel">
+      <!-- Quick select (existing saved accounts) -->
+      <div class="quick-login" id="quickLoginList"></div>
+      <div class="auth-divider">或输入账户信息登录</div>
+
+      <div class="form-group">
+        <label>账户名</label>
+        <input type="text" id="loginName" placeholder="输入账户名（注册时设置的名称）" autocomplete="off">
       </div>
+      <div class="form-group" id="loginPwdGroup">
+        <label>登录密码</label>
+        <input type="password" id="loginPwd" placeholder="输入密码（至少4位）" autocomplete="off">
+      </div>
+      <div class="form-group hidden" id="loginTokenGroup">
+        <label>GitHub Token（首次登录需填写）</label>
+        <input type="password" id="loginToken" placeholder="ghp_xxxxxxxx" autocomplete="off">
+        <div class="field-hint">Token 用于云端加密同步。可在 GitHub → Settings → Developer settings → Personal access tokens 生成（勾选 gist，30天到期）</div>
+      </div>
+      <button class="auth-btn" id="loginBtn" onclick="doLogin()">登录</button>
+      <div class="auth-hint" id="loginHint"></div>
     </div>
-    <!-- Register form -->
-    <div id="regForm" class="hidden">
-      <div class="auth-form">
-        <div>
-          <label>账户名（显示名称）</label>
-          <input type="text" id="regName" placeholder="比如：爸爸、孩子、老大" maxlength="20">
-        </div>
-        <div>
-          <label>设置登录密码</label>
-          <input type="password" id="regPwd" placeholder="至少4位" autocomplete="off">
-        </div>
-        <div>
-          <label>确认密码</label>
-          <input type="password" id="regPwd2" placeholder="再次输入密码" autocomplete="off">
-        </div>
-        <div>
-          <label>GitHub Token</label>
-          <input type="password" id="regToken" placeholder="ghp_xxxx" autocomplete="off">
-          <div class="token-note">Token 用于数据同步，每个账户独立。<br>去 GitHub Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token (30天) → 勾选 gist → 生成后粘贴到这里</div>
-        </div>
-        <button class="auth-btn" id="regBtn" onclick="doReg()">注册并登录</button>
-        <div class="auth-hint" id="regHint"></div>
-        <div class="auth-switch">已有账户？<a onclick="showAuthTab('login')">直接登录</a></div>
+
+    <!-- Register panel -->
+    <div id="regPanel" class="hidden">
+      <div class="form-group">
+        <label>账户名（显示名称）</label>
+        <input type="text" id="regName" placeholder="比如：爸爸、孩子、自己" maxlength="20" autocomplete="off">
       </div>
+      <div class="form-group">
+        <label>设置登录密码（可选，建议设置）</label>
+        <input type="password" id="regPwd" placeholder="至少4位，不设则只用 Token 登录" autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>GitHub Token</label>
+        <input type="password" id="regToken" placeholder="ghp_xxxxxxxx" autocomplete="off">
+        <div class="field-hint">必填。用于云端加密同步。每个账户需独立 Token。<br>去 GitHub → Settings → Developer settings → Tokens (classic) → Generate new token → 勾选 gist → 选 30 天到期</div>
+      </div>
+      <button class="auth-btn" id="regBtn" onclick="doReg()">注册并登录</button>
+      <div class="auth-hint" id="regHint"></div>
     </div>
   </div>
 </div>
 
-<!-- User chip (top right) -->
+<!-- User chip -->
 <div class="user-switcher hidden" id="userSwitcher">
-  <div id="userChip" onclick="toggleUserMenu()">
-    <span id="chipName">👤</span> <span id="chipLabel"></span> ▾
+  <div id="userChip" onclick="document.getElementById('userMenu').classList.toggle('hidden')">
+    <span id="chipIcon">👤</span> <span id="chipLabel">—</span> ▾
   </div>
   <div id="userMenu" class="hidden" style="position:absolute;top:100%;right:0;margin-top:6px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:6px;min-width:180px;box-shadow:var(--shadow);">
     <button class="hbtn hb-glass" style="width:100%;justify-content:flex-start;" onclick="openSettings()">⚙️ 账户设置</button>
@@ -307,9 +270,8 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
   </div>
 </div>
 
-<!-- Main app wrapper -->
+<!-- Main app -->
 <div class="app-wrap hidden" id="appWrap">
-  <!-- Sidebar -->
   <div class="sidebar">
     <div class="s-logo">📚</div>
     <button class="s-btn active" id="sBtnPlan" title="学习计划" onclick="switchMainView('plan')">📋</button>
@@ -318,27 +280,19 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
     <button class="s-btn" id="sBtnSettings" title="设置" onclick="openSettings()">⚙️</button>
   </div>
 
-  <!-- Main content -->
-  <div class="main-content" id="mainContent">
-    <!-- Plan view -->
+  <div class="main-content">
     <div id="viewPlan">
       <div class="day-tabs" id="dayTabs"></div>
       <div class="toolbar">
         <button class="btn btn-p" onclick="addPhase()">➕ 新增阶段</button>
         <div class="spacer"></div>
         <span style="font-size:13px;color:var(--muted);">📅 <input type="date" id="planDate" style="padding:4px 8px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:13px;background:var(--surface2);color:var(--text);"></span>
-        <span style="font-size:12px;color:var(--success);"><span class="autosave-dot"></span>自动保存</span>
+        <span style="font-size:12px;color:var(--success);">●</span>
         <button class="btn btn-s" onclick="saveAll()">💾 保存</button>
       </div>
       <div id="planContainer"></div>
     </div>
-    <!-- Stats view -->
-    <div id="viewStats" class="hidden">
-      <h2 style="margin-bottom:16px;">📊 执行统计</h2>
-      <div class="stat-grid" id="statGrid"></div>
-      <div class="stat-chart" id="statChart"></div>
-    </div>
-    <!-- History view -->
+    <div id="viewStats" class="hidden"></div>
     <div id="viewHist" class="hidden">
       <h2 style="margin-bottom:16px;">🕐 历史存档</h2>
       <div style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap;align-items:center;">
@@ -363,29 +317,19 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
     <h2>⚙️ 账户设置</h2>
     <div class="settings-group">
       <h3>👤 账户信息</h3>
-      <div class="set-row">
-        <span class="set-label">账户名</span>
-        <div class="set-value" id="sName" style="font-weight:600;"></div>
-      </div>
-      <div class="set-row">
-        <span class="set-label">用户ID</span>
-        <div class="set-value" id="sUID" style="font-family:monospace;font-size:13px;color:var(--muted);"></div>
-      </div>
-      <div class="set-row">
-        <span class="set-label">Token状态</span>
-        <div class="set-value" id="sTokenStatus"></div>
-      </div>
+      <div class="set-row"><span class="set-label">账户名</span><div class="set-value" id="sName" style="font-weight:600;"></div></div>
+      <div class="set-row"><span class="set-label">Token状态</span><div class="set-value" id="sTokenStatus"></div></div>
     </div>
     <div class="settings-group">
-      <h3>🔑 GitHub Token（同步用）</h3>
-      <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Token 30天到期，到期前5天App会提示你。重新生成后粘贴更新。</p>
+      <h3>🔑 更新 GitHub Token</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Token 30天到期，到期前5天App会提示你。重新生成后粘贴以下框中更新：</p>
       <input type="password" class="set-input" id="sNewToken" placeholder="粘贴新的 GitHub Token（ghp_xxx）">
       <button class="btn btn-p" style="margin-top:8px;" onclick="updateToken()">更新Token</button>
-      <div id="sTokenHint" style="font-size:13px;color:var(--muted);margin-top:8px;"></div>
+      <div id="sTokenHint" style="font-size:13px;margin-top:8px;"></div>
     </div>
     <div class="settings-group">
       <h3>🔐 修改密码</h3>
-      <input type="password" class="set-input" id="sOldPwd" placeholder="旧密码" style="margin-bottom:8px;">
+      <input type="password" class="set-input" id="sOldPwd" placeholder="旧密码（如未设密码则留空）" style="margin-bottom:8px;">
       <input type="password" class="set-input" id="sNewPwd" placeholder="新密码（至少4位）" style="margin-bottom:8px;">
       <input type="password" class="set-input" id="sNewPwd2" placeholder="再次确认新密码">
       <button class="btn btn-p" style="margin-top:8px;" onclick="updatePwd()">修改密码</button>
@@ -396,7 +340,6 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn btn-blue" onclick="pushSync()">⬆️ 上传到云端</button>
         <button class="btn btn-o" onclick="pullSync()">⬇️ 从云端下载</button>
-        <button class="btn btn-d" onclick="disconnectSync()">断开连接</button>
       </div>
       <div id="sSyncStatus" style="font-size:13px;color:var(--muted);margin-top:8px;"></div>
     </div>
@@ -408,7 +351,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
   <div class="modal" style="max-width:860px;">
     <button class="modal-close" onclick="closeModal('colModal')">&times;</button>
     <h2>⚙️ 列管理</h2>
-    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">拖动列头边缘调整宽度。修改列名、调整顺序、添加自定义列。时长列和删除列为固定列，不可移动/重命名。</p>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:14px;">拖动列头边缘调整宽度。时长列和删除列为固定列。</p>
     <div style="margin-bottom:14px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
       <input id="newColName" placeholder="新列名称（如：家长签字）" style="flex:1;min-width:180px;padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-size:14px;font-family:inherit;">
       <select id="newColType" style="padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface2);color:var(--text);font-family:inherit;font-size:14px;">
@@ -437,17 +380,7 @@ body{font-family:'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg)
       </select>
       <button class="btn btn-p" onclick="hmQuery()">🔍 查询</button>
     </div>
-    <div class="history-list" id="hmList"><div style="text-align:center;color:var(--muted);padding:30px;">加载中...</div></div>
-  </div>
-</div>
-
-<!-- Stats Modal -->
-<div class="modal-overlay hidden" id="statsModal" onclick="if(event.target===this)closeModal('statsModal')">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('statsModal')">&times;</button>
-    <h2>📊 执行统计</h2>
-    <div class="stat-grid" id="statGrid2"></div>
-    <div class="stat-chart" id="statChart2"></div>
+    <div class="history-list" id="hmList"><div style="text-align:center;color:var(--muted);padding:30px;">点击查询</div></div>
   </div>
 </div>
 
@@ -464,125 +397,7 @@ async function sDec(o,pwd){const k=await dk(pwd,b2a(o.s)),pt=await crypto.subtle
 async function hashPwd(p){return sha256(p);}
 
 /* ==================== AUTH ==================== */
-let accounts = [
-  {uid:'xxjhzs-1',name:'爸爸',token:'',pwdHash:'',gistId:'7982a2735c2f9755b15dadc4b5d03a70',gistUrl:'https://gist.github.com/gityqy/7982a2735c2f9755b15dadc4b5d03a70',created:Date.now()},
-  {uid:'xxjhzs-2',name:'孩子',token:'',pwdHash:'',gistId:'0fedb08f8b9d7ca87c52f999e18eab5f',gistUrl:'https://gist.github.com/gityqy/0fedb08f8b9d7ca87c52f999e18eab5f',created:Date.now()},
-  {uid:'xxjhzs-3',name:'xxjhzs-3',token:'',pwdHash:'',gistId:'b6b9a5e2f17fd70495c933c03d43605f',gistUrl:'https://gist.github.com/gityqy/b6b9a5e2f17fd70495c933c03d43605f',created:Date.now()},
-  {uid:'xxjhzs-4',name:'xxjhzs-4',token:'',pwdHash:'',gistId:'76ae21e6e743e53ba3a61448848522c9',gistUrl:'https://gist.github.com/gityqy/76ae21e6e743e53ba3a61448848522c9',created:Date.now()},
-  {uid:'xxjhzs-5',name:'xxjhzs-5',token:'',pwdHash:'',gistId:'9388a63029bf4820ff7a8518f5bad94e',gistUrl:'https://gist.github.com/gityqy/9388a63029bf4820ff7a8518f5bad94e',created:Date.now()},
-  {uid:'xxjhzs-6',name:'xxjhzs-6',token:'',pwdHash:'',gistId:'3ef0a4897c1831506bdd423008a27d41',gistUrl:'https://gist.github.com/gityqy/3ef0a4897c1831506bdd423008a27d41',created:Date.now()},
-];
-// Save accounts to localStorage on first load
-(function saveDefaultAccts(){
-  const stored=localStorage.getItem('spAccts');
-  if(!stored||stored==='[]'||stored===''||stored===null){
-    localStorage.setItem('spAccts',JSON.stringify(accounts));
-  } else {
-    // Merge: keep existing accounts, add missing ones from default list
-    try{
-      const existing=JSON.parse(stored);
-      const existingUIDs=new Set(existing.map(a=>a.uid));
-      accounts.forEach(defAcct=>{
-        if(!existingUIDs.has(defAcct.uid))existing.push(defAcct);
-      });
-      localStorage.setItem('spAccts',JSON.stringify(existing));
-    }catch(e){localStorage.setItem('spAccts',JSON.stringify(accounts));}
-  }
-})();
-let currentUser = null;
-let currentPwdHash = null;
-
-function getAccounts(){try{return JSON.parse(localStorage.getItem('spAccts')||'[]');}catch{return [];}}
-function saveAccounts(accts){localStorage.setItem('spAccts',JSON.stringify(accts));}
-function getCurrentUID(){return sessionStorage.getItem('spUID')||localStorage.getItem('spLastUID')||'';}
-function setCurrentUID(uid){sessionStorage.setItem('spUID',uid);localStorage.setItem('spLastUID',uid);}
-
-async function showAuthTab(tab){
-  document.getElementById('loginForm').classList.toggle('hidden',tab!=='login');
-  document.getElementById('regForm').classList.toggle('hidden',tab!=='reg');
-  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
-  document.getElementById('tabReg').classList.toggle('active',tab==='reg');
-  document.getElementById('loginHint').textContent='';
-  document.getElementById('regHint').textContent='';
-  if(tab==='login'){loadAcctList();}
-}
-
-function loadAcctList(){
-  accounts=getAccounts();
-  const sel=document.getElementById('selAcct');
-  sel.innerHTML='<option value="">-- 请选择账户 --</option>';
-  accounts.forEach(a=>{const o=document.createElement('option');o.value=a.uid;o.textContent=a.name;sel.appendChild(o);});
-  const uid=getCurrentUID();
-  if(uid){sel.value=uid;onAcctSelect(uid);}
-}
-
-function onAcctSelect(uid){
-  const acc=accounts.find(a=>a.uid===uid);
-  document.getElementById('loginTokenRow').classList.toggle('hidden',!!acc);
-  document.getElementById('loginPwdRow').classList.toggle('hidden',!!acc);
-  if(!acc){document.getElementById('loginToken').value='';document.getElementById('loginPwd').value='';}
-}
-
-async function doLogin(){
-  const uid=document.getElementById('selAcct').value;
-  const pwd=document.getElementById('loginPwd').value;
-  const token=document.getElementById('loginToken').value.trim();
-  const hint=document.getElementById('loginHint');
-  if(!uid){hint.textContent='⚠️ 请选择账户';return;}
-  const acc=accounts.find(a=>a.uid===uid);
-  if(!acc){hint.textContent='⚠️ 账户不存在';return;}
-  // Token login (first time no pwd)
-  if(!acc.pwdHash){if(!token){hint.textContent='⚠️ 请输入GitHub Token';return;}acc.token=token;saveAccounts(accounts);}
-  else{if(!pwd){hint.textContent='⚠️ 请输入密码';return;}const h=await hashPwd(pwd);if(h!==acc.pwdHash){hint.textContent='❌ 密码错误';return;}}
-  currentUser=acc;currentPwdHash=acc.pwdHash||'';
-  setCurrentUID(uid);
-  hint.textContent='✅ 登录成功，加载中...';
-  initApp();
-}
-
-async function doReg(){
-  const name=document.getElementById('regName').value.trim();
-  const pwd=document.getElementById('regPwd').value;
-  const pwd2=document.getElementById('regPwd2').value;
-  const token=document.getElementById('regToken').value.trim();
-  const hint=document.getElementById('regHint');
-  if(!name){hint.textContent='⚠️ 请输入账户名';return;}
-  if(pwd.length<4){hint.textContent='⚠️ 密码至少4位';return;}
-  if(pwd!==pwd2){hint.textContent='⚠️ 两次密码不一致';return;}
-  if(!token.startsWith('ghp_')){hint.textContent='⚠️ Token格式错误（应以ghp_开头）';return;}
-  hint.textContent='⏳ 验证Token并创建账户...';
-  // Verify token by creating a gist
-  try{
-    const h={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json","User-Agent":"StudyPlan"};
-    const r=await fetch('https://api.github.com/gists',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({description:"学习计划助手-"+name+"-数据同步",public:false,files:{"data.json":{content:"{}"}}})});
-    if(!r.ok){const e=await r.json();throw new Error(e.message||'Token无效');}
-    const d=await r.json();
-    const uid='u'+Date.now();
-    const pwdHash=await hashPwd(pwd);
-    const newAcct={uid,name,token,pwdHash,gistId:d.id,gistUrl:d.html_url,created:Date.now()};
-    accounts.push(newAcct);
-    saveAccounts(accounts);
-    currentUser=newAcct;currentPwdHash=pwdHash;
-    setCurrentUID(uid);
-    hint.textContent='✅ 账户创建成功，加载中...';
-    initApp();
-  }catch(e){hint.textContent='❌ Token验证失败：'+e.message;console.error(e);}
-}
-
-function doLogout(){
-  sessionStorage.removeItem('spUID');
-  document.getElementById('authWrap').classList.remove('hidden');
-  document.getElementById('appWrap').classList.add('hidden');
-  document.getElementById('userSwitcher').classList.add('hidden');
-  document.getElementById('toast').classList.add('hidden');
-  closeAllModals();
-}
-
-function toggleUserMenu(){
-  document.getElementById('userMenu').classList.toggle('hidden');
-}
-
-/* ==================== MAIN APP ==================== */
+const GIST_API='https://api.github.com/gists';
 const DAY_NAMES=['一','二','三','四','五','六','日'];
 const BUILTIN_COLS=[
   {id:'check',label:'✓',type:'check',width:38,builtin:true},
@@ -594,54 +409,255 @@ const BUILTIN_COLS=[
   {id:'note',label:'执行情况',type:'text',width:500,builtin:true},
   {id:'del',label:'',type:'del',width:36,builtin:true},
 ];
-let planData={},customCols=[],colOrder=[],colLabels={},colWidths={},historyData=[];
-let currentDay=1,autoSaveTimer=null,fsVal=16;
-let alarmTP=null,alarmTR=null,syncTP=null,syncTR=null;
-let syncEnabled=false,syncStatus='idle',lastServerTime=0;
-let alarmEnabled=true,speechOk=false,volume=0.8;
-const GIST_API='https://api.github.com/gists';
-
 const TYPE_NAMES={check:'✅ 勾选',time:'🕐 时间',text:'📝 文本',dur:'⏱ 时长',del:'🗑 删除'};
 
-// getAllCols() defined below after BUILTIN_COLS
+// Default 6 accounts
+const DEFAULT_ACCTS=[
+  {uid:'xxjhzs-1',name:'爸爸',token:'',pwdHash:'',gistId:'7982a2735c2f9755b15dadc4b5d03a70',gistUrl:'https://gist.github.com/gityqy/7982a2735c2f9755b15dadc4b5d03a70'},
+  {uid:'xxjhzs-2',name:'孩子',token:'',pwdHash:'',gistId:'0fedb08f8b9d7ca87c52f999e18eab5f',gistUrl:'https://gist.github.com/gityqy/0fedb08f8b9d7ca87c52f999e18eab5f'},
+  {uid:'xxjhzs-3',name:'账户3',token:'',pwdHash:'',gistId:'b6b9a5e2f17fd70495c933c03d43605f',gistUrl:'https://gist.github.com/gityqy/b6b9a5e2f17fd70495c933c03d43605f'},
+  {uid:'xxjhzs-4',name:'账户4',token:'',pwdHash:'',gistId:'76ae21e6e743e53ba3a61448848522c9',gistUrl:'https://gist.github.com/gityqy/76ae21e6e743e53ba3a61448848522c9'},
+  {uid:'xxjhzs-5',name:'账户5',token:'',pwdHash:'',gistId:'9388a63029bf4820ff7a8518f5bad94e',gistUrl:'https://gist.github.com/gityqy/9388a63029bf4820ff7a8518f5bad94e'},
+  {uid:'xxjhzs-6',name:'账户6',token:'',pwdHash:'',gistId:'3ef0a4897c1831506bdd423008a27d41',gistUrl:'https://gist.github.com/gityqy/3ef0a4897c1831506bdd423008a27d41'},
+];
+
+let accounts=[];
+let currentUser=null;
+let currentPwdHash=null;
+
+function getAccounts(){return JSON.parse(localStorage.getItem('spAccts')||'[]');}
+function saveAccounts(accts){localStorage.setItem('spAccts',JSON.stringify(accts));}
+function getLastUID(){return localStorage.getItem('spLastUID')||'';}
+function setLastUID(uid){localStorage.setItem('spLastUID',uid);}
+
+function ensureDefaultAccts(){
+  const stored=getAccounts();
+  if(!stored||stored.length===0){
+    saveAccounts(DEFAULT_ACCTS);
+  } else {
+    // Merge missing defaults
+    const uids=new Set(stored.map(a=>a.uid));
+    let changed=false;
+    DEFAULT_ACCTS.forEach(def=>{
+      if(!uids.has(def.uid)){stored.push(def);changed=true;}
+    });
+    if(changed)saveAccounts(stored);
+  }
+}
+
+function showAuthTab(tab){
+  document.getElementById('loginPanel').classList.toggle('hidden',tab!=='login');
+  document.getElementById('regPanel').classList.toggle('hidden',tab!=='reg');
+  document.getElementById('tabLogin').classList.toggle('active',tab==='login');
+  document.getElementById('tabReg').classList.toggle('active',tab==='reg');
+  document.getElementById('loginHint').textContent='';
+  document.getElementById('regHint').textContent='';
+  if(tab==='login')renderQuickList();
+}
+
+function renderQuickList(){
+  accounts=getAccounts();
+  const el=document.getElementById('quickLoginList');
+  const saved=accounts.filter(a=>a.token||a.pwdHash);
+  if(saved.length===0){el.innerHTML='';return;}
+  el.innerHTML=saved.map(a=>`<div class="ql-item" onclick="quickLogin('${a.uid}')">
+    <span class="qli-name">👤 ${a.name}</span>
+    <span class="qli-hint">${a.token?'✅ 已设Token':'⚠️ 无Token'}${a.pwdHash?' · 🔐':' · 无密码'}</span>
+    <span class="qli-arrow">›</span>
+  </div>`).join('');
+}
+
+function quickLogin(uid){
+  accounts=getAccounts();
+  const acc=accounts.find(a=>a.uid===uid);
+  if(!acc){renderQuickList();return;}
+  currentUser=acc;
+  currentPwdHash=acc.pwdHash||'';
+  setLastUID(uid);
+  if(!acc.token&&!acc.pwdHash){
+    document.getElementById('loginTokenGroup').classList.remove('hidden');
+    document.getElementById('loginPwdGroup').classList.remove('hidden');
+    document.getElementById('loginName').value=acc.name;
+    document.getElementById('loginHint').textContent='⚠️ 该账户首次登录，请填写 GitHub Token 并设置密码';
+    return;
+  }
+  if(acc.token&&!acc.pwdHash){
+    document.getElementById('loginTokenGroup').classList.add('hidden');
+    document.getElementById('loginPwdGroup').classList.remove('hidden');
+    document.getElementById('loginName').value=acc.name;
+    return;
+  }
+  if(acc.pwdHash){
+    document.getElementById('loginTokenGroup').classList.add('hidden');
+    document.getElementById('loginPwdGroup').classList.remove('hidden');
+    document.getElementById('loginName').value=acc.name;
+    document.getElementById('loginPwd').focus();
+  }
+}
+
+async function doLogin(){
+  const name=document.getElementById('loginName').value.trim();
+  const pwd=document.getElementById('loginPwd').value;
+  const token=document.getElementById('loginToken').value.trim();
+  const hint=document.getElementById('loginHint');
+  const btn=document.getElementById('loginBtn');
+  if(!name){hint.textContent='⚠️ 请输入账户名';hint.className='auth-hint err';return;}
+  accounts=getAccounts();
+  let acc=accounts.find(a=>a.name===name);
+  // If account exists, use it. Otherwise try quick login by uid
+  if(!acc)acc=accounts.find(a=>a.uid===name);
+  if(!acc){hint.textContent='❌ 账户不存在，请先注册';hint.className='auth-hint err';return;}
+  currentUser=acc;
+  // Has token+password
+  if(acc.token&&acc.pwdHash){
+    if(!pwd){hint.textContent='⚠️ 请输入密码';hint.className='auth-hint err';return;}
+    const h=await hashPwd(pwd);
+    if(h!==acc.pwdHash){hint.textContent='❌ 密码错误';hint.className='auth-hint err';return;}
+  }
+  // Has token only (no password) - need token to verify
+  else if(acc.token&&!acc.pwdHash){
+    if(!pwd){hint.textContent='⚠️ 请输入密码';hint.className='auth-hint err';return;}
+    const h=await hashPwd(pwd);
+    if(h!==acc.pwdHash){hint.textContent='❌ 密码错误';hint.className='auth-hint err';return;}
+  }
+  // No token yet - need to set token and optionally password
+  else {
+    if(!token){hint.textContent='⚠️ 首次登录请填写 GitHub Token';hint.className='auth-hint err';return;}
+    if(!token.startsWith('ghp_')){hint.textContent='⚠️ Token格式错误，应以 ghp_ 开头';hint.className='auth-hint err';return;}
+    if(pwd&&pwd.length<4){hint.textContent='⚠️ 密码至少4位';hint.className='auth-hint err';return;}
+    acc.token=token;
+    if(pwd){acc.pwdHash=await hashPwd(pwd);currentPwdHash=acc.pwdHash;}
+    saveAccounts(accounts);
+  }
+  setLastUID(acc.uid);
+  hint.textContent='✅ 登录成功，加载中...';hint.className='auth-hint ok';
+  btn.disabled=true;
+  initApp();
+}
+
+async function doReg(){
+  const name=document.getElementById('regName').value.trim();
+  const pwd=document.getElementById('regPwd').value;
+  const token=document.getElementById('regToken').value.trim();
+  const hint=document.getElementById('regHint');
+  const btn=document.getElementById('regBtn');
+  if(!name){hint.textContent='⚠️ 请输入账户名';hint.className='auth-hint err';return;}
+  if(pwd&&pwd.length<4){hint.textContent='⚠️ 密码至少4位';hint.className='auth-hint err';return;}
+  if(!token){hint.textContent='⚠️ GitHub Token 必填';hint.className='auth-hint err';return;}
+  if(!token.startsWith('ghp_')){hint.textContent='⚠️ Token格式错误，应以 ghp_ 开头';hint.className='auth-hint err';return;}
+  hint.textContent='⏳ 验证 Token 并创建账户...';hint.className='auth-hint';btn.disabled=true;
+  // Verify token by fetching its gist
+  accounts=getAccounts();
+  if(accounts.find(a=>a.name===name)){hint.textContent='❌ 账户名已存在，请换一个';hint.className='auth-hint err';btn.disabled=false;return;}
+  try{
+    const rh={"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json","User-Agent":"StudyPlanApp"};
+    // Create a new private gist for this user
+    const r=await fetch(GIST_API,{method:'POST',headers:{"Content-Type":"application/json"},body:JSON.stringify({description:"学习计划助手-"+name+"-数据同步",public:false,files:{"data.json":{content:"{}"}}})});
+    if(!r.ok){const e=await r.json();throw new Error(e.message||'Token无效');}
+    const d=await r.json();
+    const uid='u'+Date.now();
+    const pwdHash=pwd?await hashPwd(pwd):'';
+    const newAcct={uid,name,token,pwdHash,gistId:d.id,gistUrl:d.html_url};
+    accounts.push(newAcct);
+    saveAccounts(accounts);
+    currentUser=newAcct;currentPwdHash=pwdHash||'';
+    setLastUID(uid);
+    hint.textContent='✅ 账户创建成功，加载中...';hint.className='auth-hint ok';
+    initApp();
+  }catch(e){hint.textContent='❌ '+e.message;hint.className='auth-hint err';btn.disabled=false;}
+}
+
+function doLogout(){
+  sessionStorage.removeItem('spUID');
+  document.getElementById('authWrap').classList.remove('hidden');
+  document.getElementById('appWrap').classList.add('hidden');
+  document.getElementById('userSwitcher').classList.add('hidden');
+  closeAllModals();
+  document.getElementById('loginBtn').disabled=false;
+  document.getElementById('regBtn').disabled=false;
+  document.getElementById('loginPwd').value='';
+  document.getElementById('loginToken').value='';
+  document.getElementById('regName').value='';
+  document.getElementById('regPwd').value='';
+  document.getElementById('regToken').value='';
+  showAuthTab('login');
+}
+
+/* ==================== MAIN APP DATA ==================== */
+let planData={},customCols=[],colOrder=[],colLabels={},colWidths={},historyData=[];
+let currentDay=1,autoSaveTimer=null,fsVal=16;
+let syncTP=null,syncTR=null,syncStatus='idle',lastServerTime=0;
+let alarmEnabled=true,speechOk=false,volume=0.8;
+
+function getAllCols(){
   const defs={};BUILTIN_COLS.forEach(c=>defs[c.id]={...c,builtin:true});customCols.forEach(c=>defs[c.id]={...c,builtin:false});
-  let order;if(colOrder&&colOrder.length){order=[...colOrder];const oS=new Set(order);Object.keys(defs).forEach(id=>{if(!oS.has(id))order.push(id);});}else{order=Object.keys(defs);}
-  return order.map(id=>{const d=defs[id];if(!d)return null;return{...d,label:colLabels[id]||d.label,width:colWidths[id]||d.width};}).filter(Boolean);
+  if(!colOrder||!colOrder.length)colOrder=Object.keys(defs);
+  return colOrder.map(id=>{const d=defs[id];if(!d)return null;
+    return{...d,label:colLabels[id]||d.label,width:colWidths[id]||d.width};}).filter(Boolean);
 }
-function renderColList(){
-  const cols=getAllCols(),tbody=document.getElementById('colMgrBody');
-  tbody.innerHTML='';
-  cols.forEach((col,i)=>{
-    const fixed=isFixedCol(col);
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td>
-      <button onclick="moveCol('${col.id}',-1)" ${i===0?'disabled':''} style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;">⬆</button>
-      <button onclick="moveCol('${col.id}',1)" ${i===cols.length-1?'disabled':''} style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;">⬇</button>
-    </td>
-    <td>${fixed?'<span style="color:var(--muted)">'+col.label+'</span>':'<input value="'+col.label+'" onchange="renameCol(\''+col.id+'\',this.value)" style="width:100%;padding:6px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:inherit;"></input>'}</td>
-    <td>${TYPE_NAMES[col.type]||col.type}</td>
-    <td>${fixed?'<span style="color:var(--muted)">'+col.width+'</span>':'<input type="number" value="'+col.width+'" onchange="resizeCol(\''+col.id+'\',this.value)" style="width:70px;padding:6px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-size:13px;font-family:inherit;text-align:center;"></input>'}</td>
-    <td>${!fixed&&!col.builtin?'<button onclick="removeCustomCol(\''+col.id+'\')" class="phase-del" style="width:60px;">删除</button>':'<span style="color:var(--muted);font-size:12px;">固定</span>'}</td>`;
-    tbody.appendChild(tr);
-  });
+function isFixedCol(col){return col.id==='dur'||col.id==='del';}
+function getDataKey(){return currentUser?'spData_'+currentUser.uid:'spData';}
+function getCfgKey(){return currentUser?'spCfg_'+currentUser.uid:'spCfg';}
+function getHistKey(){return currentUser?'spHist_'+currentUser.uid:'spHist';}
+function saveData(){localStorage.setItem(getDataKey(),JSON.stringify(planData));}
+function saveColConfig(){localStorage.setItem(getCfgKey(),JSON.stringify({customCols,colOrder,colLabels,colWidths}));}
+function saveHistory(){localStorage.setItem(getHistKey(),JSON.stringify(historyData));}
+
+function loadAllData(){
+  try{const d=localStorage.getItem(getDataKey());planData=d?JSON.parse(d):{};}catch{planData={};}
+  try{const c=localStorage.getItem(getCfgKey());if(c){const o=JSON.parse(c);customCols=o.customCols||[];colOrder=o.colOrder||[];colLabels=o.colLabels||{};colWidths=o.colWidths||{};}}catch{}
+  try{const h=localStorage.getItem(getHistKey());historyData=h?JSON.parse(h):[];}catch{historyData=[];}
 }
-function addCustomCol(){
-  const name=document.getElementById('newColName').value.trim();const type=document.getElementById('newColType').value;
-  if(!name){toast('⚠️ 请输入列名');return;}
-  const id='custom_'+Date.now();
-  customCols.push({id,label:name,type,width:120});
-  if(!colOrder.includes(id)){colOrder.push(id);}
-  saveColConfig();renderColList();renderPlan();toast('✅ 已添加列：'+name);
+function loadUserPrefs(){
+  if(!currentUser)return;
+  const fk='spFS_'+currentUser.uid;
+  fsVal=parseInt(localStorage.getItem(fk)||'16');
+  document.documentElement.style.setProperty('--fs',fsVal+'px');
+  document.getElementById('fsLabel').textContent=fsVal;
+  volume=parseFloat(localStorage.getItem('spVol_'+currentUser.uid)||'0.8');
+  document.getElementById('volSlider').value=volume;
+  alarmEnabled=localStorage.getItem('spAlarm_'+currentUser.uid)!=='0';
+  document.getElementById('alarmToggle').checked=alarmEnabled;
 }
-function removeCustomCol(id){if(!confirm('删除该列？'))return;customCols=customCols.filter(c=>c.id!==id);colOrder=colOrder.filter(c=>c!==id);delete colLabels[id];delete colWidths[id];saveColConfig();renderColList();renderPlan();toast('已删除列');}
-function moveCol(id,dir){const i=colOrder.indexOf(id);if(i<0)return;const ni=i+dir;if(ni<0||ni>=colOrder.length)return;[colOrder[i],colOrder[ni]]=[colOrder[ni],colOrder[i]];saveColConfig();renderColList();renderPlan();}
-function renameCol(id,name){colLabels[id]=name;saveColConfig();renderColList();renderPlan();}
-function resizeCol(id,val){colWidths[id]=parseInt(val)||100;saveColConfig();renderPlan();}
+
+/* ==================== INIT ==================== */
+function boot(){
+  ensureDefaultAccts();
+  const lastUID=getLastUID();
+  accounts=getAccounts();
+  if(lastUID&&accounts.find(a=>a.uid===lastUID&&(a.token||a.pwdHash))){
+    const acc=accounts.find(a=>a.uid===lastUID);
+    currentUser=acc;currentPwdHash=acc.pwdHash||'';
+    initApp();
+  }else{
+    document.getElementById('authWrap').classList.remove('hidden');
+    showAuthTab('login');
+  }
+}
+
+function initApp(){
+  document.getElementById('authWrap').classList.add('hidden');
+  document.getElementById('appWrap').classList.remove('hidden');
+  document.getElementById('userSwitcher').classList.remove('hidden');
+  document.getElementById('chipLabel').textContent=currentUser.name;
+  document.getElementById('chipIcon').textContent='👤';
+  document.querySelector('.app-title').textContent='📚 '+currentUser.name+' 的学习计划';
+  loadAllData();
+  loadUserPrefs();
+  if(!colOrder||!colOrder.length){colOrder=BUILTIN_COLS.map(c=>c.id);saveColConfig();}
+  renderDayTabs();
+  switchDay(currentDay);
+  startClock();
+  startAutoSave();
+  startAutoSync();
+  checkTokenExpiry();
+  buildStatGrid();
+  renderColList();
+}
 
 /* ==================== PLAN ==================== */
 function ensureDay(d){if(!planData[d])planData[d]={phases:[{name:'学习阶段',tasks:[]}]};return planData[d];}
 function getDayData(){return ensureDay(currentDay);}
-function getCurrentPhase(){const dd=getDayData();if(!dd.phases.length)dd.phases.push({name:'学习阶段',tasks:[]});return dd.phases[dd.phases.length-1];}
 
 function renderDayTabs(){
   const el=document.getElementById('dayTabs');
@@ -657,7 +673,6 @@ function renderDayTabs(){
 function switchDay(d){
   currentDay=d;
   document.querySelectorAll('.day-tab').forEach((b,i)=>b.classList.toggle('active',i+1===d));
-  document.getElementById('planDate').value=new Date().toISOString().split('T')[0];
   renderPlan();
 }
 
@@ -666,52 +681,48 @@ function renderPlan(){
   const cols=getAllCols();
   let html='';
   dd.phases.forEach((phase,pi)=>{
+    const ths=cols.map(c=>`<th style="width:${c.width}px;position:relative;" data-col="${c.id}">${escHtml(c.label)}<div class="resize-handle" onmousedown="startResize(event,'${c.id}')"></div></th>`).join('');
+    const rows=(phase.tasks||[]).map(t=>{
+      const tds=cols.map(c=>{
+        if(c.type==='check')return`<td class="check-cell"><input type="checkbox" class="chk-box" ${t[c.id]?'checked':''} onchange="upd('${t.id}','${c.id}',this.checked)"></td>`;
+        if(c.type==='del')return`<td><button class="del-btn" onclick="delTask(${pi},'${t.id}')">✕</button></td>`;
+        if(c.type==='dur')return`<td class="dur-cell" id="dur-${t.id}">${calcDur(t.start,t.end)}</td>`;
+        if(c.type==='time')return`<td><input type="time" class="time-input" value="${t[c.id]||''}" onchange="upd('${t.id}','${c.id}',this.value)"></td>`;
+        return`<td><input class="td-input" value="${escHtml(t[c.id]||'')}" placeholder="${escHtml(c.label)}" onchange="upd('${t.id}','${c.id}',this.value)"></td>`;
+      }).join('');
+      return `<tr data-id="${t.id}">${tds}</tr>`;
+    }).join('');
     html+=`<div class="plan-phase">
       <div class="phase-header">
-        <div class="phase-title">📌 <input class="phase-name-input" value="${escHtml(phase.name)}" onchange="renamePhase(${pi},this.value)"></div>
-        <div class="phase-actions"><button class="phase-del" onclick="deletePhase(${pi})">🗑 删除阶段</button></div>
+        <div class="phase-title">📌 <input class="phase-name-input" value="${escHtml(phase.name)}" onchange="renPhase(${pi},this.value)"></div>
+        <button class="phase-del" onclick="delPhase(${pi})">🗑 删除阶段</button>
       </div>
-      <div class="plan-table">
-        <table>
-          <thead><tr>${cols.map(c=>`<th style="width:${c.width}px;" data-col="${c.id}" onclick="sortByCol('${c.id}')">${escHtml(c.label)}<div class="resize-handle" onmousedown="startResize(event,'${c.id}')"></div></th>`).join('')}</tr></thead>
-          <tbody id="tasks-${pi}">${(phase.tasks||[]).map(t=>renderTaskRow(t,pi,cols)).join('')}</tbody>
-        </table>
-      </div>
+      <div class="plan-table"><table><thead><tr>${ths}</tr></thead><tbody id="tasks-${pi}">${rows}</tbody></table></div>
       <button class="btn btn-s" style="margin-top:10px;" onclick="addTask(${pi})">➕ 添加任务</button>
     </div>`;
   });
   html+=`<button class="btn btn-p" style="margin-top:8px;" onclick="addPhase()">➕ 新增阶段</button>`;
   document.getElementById('planContainer').innerHTML=html;
-  setupResize();
   autoCalcDur();
   checkAlarms();
 }
-function escHtml(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-function renderTaskRow(t,pi,cols){
-  return `<tr data-id="${t.id}">${cols.map(c=>{
-    if(c.type==='check')return`<td class="check-cell"><input type="checkbox" class="chk-box" ${t.checked?'checked':''} onchange="toggleCheck('${t.id}','${c.id}',this.checked)"></td>`;
-    if(c.type==='del')return`<td><button class="del-btn" onclick="deleteTask(${pi},'${t.id}')">✕</button></td>`;
-    if(c.type==='dur')return`<td class="dur-cell" id="dur-${t.id}">${calcDur(t.start,t.end)}</td>`;
-    if(c.type==='time')return`<td><input type="time" class="time-input td-input" value="${t[c.id]||''}" onchange="updateTask('${t.id}','${c.id}',this.value)"></td>`;
-    return`<td><input class="td-input w-full" value="${escHtml(t[c.id]||'')}" placeholder="${escHtml(c.label)}" onchange="updateTask('${t.id}','${c.id}',this.value)"></td>`;
-  }).join('')}</tr>`;
-}
-function addPhase(){const dd=getDayData();dd.phases.push({name:'新阶段',tasks:[]});saveData();renderPlan();toast('✅ 已添加阶段');}
-function deletePhase(pi){if(!confirm('删除此阶段？'))return;getDayData().phases.splice(pi,1);saveData();renderPlan();}
-function renamePhase(pi,name){getDayData().phases[pi].name=name;saveData();}
+
+function escHtml(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function addPhase(){getDayData().phases.push({name:'新阶段',tasks:[]});saveData();renderPlan();}
+function delPhase(pi){if(!confirm('删除此阶段？'))return;getDayData().phases.splice(pi,1);saveData();renderPlan();}
+function renPhase(pi,name){getDayData().phases[pi].name=name;saveData();}
 function addTask(pi){const t={id:'t'+Date.now(),start:'',end:'',content:'',ok:false,note:'',checked:false};getDayData().phases[pi].tasks.push(t);saveData();renderPlan();}
-function deleteTask(pi,id){getDayData().phases[pi].tasks=getDayData().phases[pi].tasks.filter(t=>t.id!==id);saveData();renderPlan();}
-function toggleCheck(id,col,val){const tasks=getCurrentPhase().tasks;const t=tasks.find(x=>x.id===id);if(t)t[col]=val;saveData();}
-function updateTask(id,col,val){const tasks=getCurrentPhase().tasks;const t=tasks.find(x=>x.id===id);if(t)t[col]=val;saveData();autoCalcDur();checkAlarms();}
+function delTask(pi,id){getDayData().phases[pi].tasks=getDayData().phases[pi].tasks.filter(t=>t.id!==id);saveData();renderPlan();}
+function upd(id,col,val){const tasks=getDayData().phases.reduce((a,p)=>a.concat(p.tasks||[]),[]);const t=tasks.find(x=>x.id===id);if(t){t[col]=val;saveData();autoCalcDur();checkAlarms();}}
 function calcDur(s,e){if(!s||!e)return'';const[a,b]=s.split(':').map(Number);const[c,d]=e.split(':').map(Number);if(isNaN(a)||isNaN(c))return'';const m=(c*60+d)-(a*60+b);if(m<0)return'';const h=Math.floor(m/60),min=m%60;return h>0?`${h}小时${min}分`:`${min}分钟`;}
-function autoCalcDur(){document.querySelectorAll('tr[data-id]').forEach(row=>{const id=row.dataset.id;const s=document.querySelector(`#tasks-${currentDay-1} tr[data-id="${id}"] input[type="time"]`)?.value;const e=document.querySelector(`#tasks-${currentDay-1} tr[data-id="${id}"] input[type="time"]:nth-of-type(2)`)?.value;const el=document.getElementById('dur-'+id);if(el)el.textContent=calcDur(s,e);});}
+function autoCalcDur(){} // computed inline
 
 /* ==================== RESIZE ==================== */
 let resizingCol=null,startX=0,startW=0;
-function startResize(e,colId){resizingCol=colId;startX=e.clientX;const col=getAllCols().find(c=>c.id===colId);startW=col?col.width:100;document.addEventListener('mousemove',doResize);document.addEventListener('mouseup',stopResize);e.preventDefault();}
-function doResize(e){if(!resizingCol)return;const w=Math.max(40,startW+(e.clientX-startX));document.querySelectorAll(`th[data-col="${resizingCol}"]`).forEach(h=>h.style.width=w+'px');document.querySelectorAll(`td:nth-child(${getAllCols().findIndex(c=>c.id===resizingCol)+1})`).forEach(d=>d.style.width=w+'px');}
+function startResize(e,colId){resizingCol=colId;startX=e.clientX;const col=getAllCols().find(c=>c.id===colId);startW=col?col.width:100;document.addEventListener('mousemove',doResize,{passive:true});document.addEventListener('mouseup',stopResize);e.preventDefault();}
+function doResize(e){if(!resizingCol)return;const w=Math.max(40,startW+(e.clientX-startX));document.querySelectorAll(`th[data-col="${resizingCol}"]`).forEach(h=>h.style.width=w+'px');}
 function stopResize(){if(resizingCol){colWidths[resizingCol]=Math.max(40,startW+(event.clientX-startX));saveColConfig();resizingCol=null;}document.removeEventListener('mousemove',doResize);document.removeEventListener('mouseup',stopResize);}
-function setupResize(){}
+
 /* ==================== CLOCK & ALARM ==================== */
 function startClock(){
   function tick(){
@@ -723,73 +734,64 @@ function startClock(){
 }
 function checkAlarms(){
   if(!alarmEnabled)return;
-  const tasks=getCurrentPhase().tasks;
-  const now=new Date(),curH=now.getHours(),curM=now.getMinutes();
+  const tasks=getDayData().phases.reduce((a,p)=>a.concat(p.tasks||[]),[]);
+  const n=new Date(),h=n.getHours(),m=n.getMinutes();
   tasks.forEach(t=>{
     if(t.start){
-      const[sH,sM]=t.start.split(':').map(Number);
-      if(sH===curH&&sM===curM&&!t._alarmed){
-        t._alarmed=true;playAlarm(t.content||'任务开始');
-      }
+      const[sh,sm]=t.start.split(':').map(Number);
+      if(sh===h&&sm===m&&!t._alarmed){t._alarmed=true;playAlarm(t.content||'任务开始');}
     }
     if(t.end){
-      const[eH,eM]=t.end.split(':').map(Number);
-      if(eH===curH&&eM===curM&&!t._alarmed2){
-        t._alarmed2=true;playAlarm((t.content||'任务')+' — 结束');
-      }
+      const[eh,em]=t.end.split(':').map(Number);
+      if(eh===h&&em===m&&!t._alarmed2){t._alarmed2=true;playAlarm((t.content||'任务')+'结束');}
     }
   });
+  // schedule next check
+  if(alarmTP)clearTimeout(alarmTP);
+  alarmTP=setTimeout(checkAlarms,30000);
 }
 function playAlarm(msg){
-  const ac=new(window.AudioContext||window.webkitAudioContext)();
-  const osc=ac.createOscillator(),gain=ac.createGain();
-  osc.connect(gain);gain.connect(ac.destination);
-  osc.frequency.value=880;gain.gain.value=volume;
-  osc.start();setTimeout(()=>{osc.stop();gain.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.3);},300);
-  setTimeout(()=>{
-    osc.frequency.value=1100;osc.start();
+  try{
+    const ac=new(window.AudioContext||window.webkitAudioContext)();
+    const osc=ac.createOscillator(),gain=ac.createGain();
+    osc.connect(gain);gain.connect(ac.destination);
+    osc.frequency.value=880;gain.gain.value=volume;
+    osc.start();
     setTimeout(()=>{osc.stop();gain.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.3);},300);
-  },400);
-  if(speechOk&&'speechSynthesis'in window){
-    const utter=new SpeechSynthesisUtterance(msg+'\u3002'+msg+'\u3002'+msg);
-    utter.lang='zh-CN';utter.volume=volume;utter.rate=1.1;
-    speechSynthesis.speak(utter);
+    setTimeout(()=>{
+      osc.frequency.value=1100;osc.start();
+      setTimeout(()=>{osc.stop();gain.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.3);},300);
+    },400);
+  }catch(e){}
+  if(speechOk&&window.speechSynthesis){
+    const u=new SpeechSynthesisUtterance(msg+'。'+msg+'。'+msg);
+    u.lang='zh-CN';u.volume=volume;
+    speechSynthesis.speak(u);
   }
   document.getElementById('alarmDot').style.background='#ef4444';
-  setTimeout(()=>document.getElementById('alarmDot').style.background='',3000);
+  setTimeout(()=>{document.getElementById('alarmDot').style.background='';},3000);
 }
-function testAlarm(){
-  volume=parseFloat(document.getElementById('volSlider').value);
-  localStorage.setItem('spVol_'+currentUser.uid,volume);
-  playAlarm('测试闹钟，3、2、1');
-}
-function saveAll(){saveData();saveColConfig();saveHistory();toast('✅ 已保存');}
-function startAutoSave(){
-  if(autoSaveTimer)clearInterval(autoSaveTimer);
-  autoSaveTimer=setInterval(()=>{saveData();saveColConfig();},30000);
-  document.getElementById('planDate').addEventListener('change',()=>{});
-}
+function testAlarm(){volume=parseFloat(document.getElementById('volSlider').value);playAlarm('测试闹钟，三二一');}
 
-/* ==================== SYNC (GitHub Gist) ==================== */
-async function gistHeaders(){return{"Authorization":"Bearer "+(currentUser?.token||''),"Accept":"application/vnd.github+json","Content-Type":"application/json","User-Agent":"StudyPlan"};}
+function saveAll(){saveData();saveColConfig();saveHistory();toast('✅ 已保存');}
+function startAutoSave(){if(autoSaveTimer)clearInterval(autoSaveTimer);autoSaveTimer=setInterval(()=>{saveData();saveColConfig();},30000);}
+
+/* ==================== SYNC ==================== */
+async function gistH(){return{"Authorization":"Bearer "+(currentUser?.token||''),"Accept":"application/vnd.github+json","Content-Type":"application/json","User-Agent":"StudyPlanApp"};}
 async function pushSync(){
   if(!currentUser?.gistId)return;
   saveData();saveColConfig();saveHistory();
-  const payload={planData,customCols,colOrder,colLabels,colWidths,historyData,_ts:Date.now()};
   const key=currentPwdHash||currentUser.token;
-  const enc=await sEnc(payload,key);
+  const enc=await sEnc({planData,customCols,colOrder,colLabels,colWidths,historyData,_ts:Date.now()},key);
   try{
-    const r=await fetch(GIST_API+'/'+currentUser.gistId,{
-      method:'PATCH',headers:await gistHeaders(),
-      body:JSON.stringify({description:"学习计划助手-"+currentUser.name+"-数据同步",public:false,files:{"data.json":{content:JSON.stringify(enc)}}})
-    });
+    const r=await fetch(GIST_API+'/'+currentUser.gistId,{method:'PATCH',headers:await gistH(),body:JSON.stringify({description:"学习计划助手-"+currentUser.name+"-数据同步",public:false,files:{"data.json":{content:JSON.stringify(enc)}}})});
     if(r.ok){lastServerTime=enc.t;setSyncSt('ok');toast('☁️ 已上传云端');}else{setSyncSt('error');toast('❌ 上传失败');}
-  }catch(e){setSyncSt('error');toast('❌ 上传失败：'+e.message);}
+  }catch(e){setSyncSt('error');toast('❌ 上传失败');}
 }
 async function pullSync(){
   if(!currentUser?.gistId)return;
   try{
-    const r=await fetch(GIST_API+'/'+currentUser.gistId,{headers:await gistHeaders()});
+    const r=await fetch(GIST_API+'/'+currentUser.gistId,{headers:await gistH()});
     if(!r.ok){setSyncSt('error');return;}
     const gist=await r.json();
     const raw=gist.files?.['data.json']?.content;
@@ -800,137 +802,187 @@ async function pullSync(){
       try{
         const p=await sDec(enc,key);
         planData=p.planData||{};customCols=p.customCols||[];colOrder=p.colOrder||[];colLabels=p.colLabels||{};colWidths=p.colWidths||{};historyData=p.historyData||[];
-        saveData();saveColConfig();saveHistory();lastServerTime=enc._ts;setSyncSt('ok');renderPlan();toast('☁️ 已从云端同步');
-      }catch(e){toast('❌ 数据解密失败，密码不一致？');setSyncSt('error');}
+        saveData();saveColConfig();saveHistory();lastServerTime=enc._ts;setSyncSt('ok');renderPlan();toast('☁️ 已同步');
+      }catch(e){toast('❌ 解密失败，密码不一致？');setSyncSt('error');}
     }else{setSyncSt('ok');}
   }catch(e){setSyncSt('error');}
 }
-function disconnectSync(){if(!confirm('断开云端同步？本地数据保留。'))return;currentUser.gistId=null;currentUser.gistUrl='';saveAccounts(accounts);syncEnabled=false;lastServerTime=0;toast('已断开云端同步');}
 function setSyncSt(s){syncStatus=s;const d=document.getElementById('syncDot'),l=document.getElementById('syncLabel');if(d)d.className='sync-dot '+s;if(l)l.textContent={idle:'未同步',ok:'已同步',syncing:'同步中...',error:'失败'}[s]||s;}
 function startAutoSync(){
   if(syncTP)clearInterval(syncTP);if(syncTR)clearInterval(syncTR);
-  if(currentUser?.gistId){
-    syncTP=setInterval(pushSync,60000);
-    syncTR=setInterval(pullSync,30000);
-    pullSync();
-  }
+  if(currentUser?.gistId){syncTP=setInterval(pushSync,60000);syncTR=setInterval(pullSync,30000);pullSync();}
 }
 
-/* ==================== TOKEN EXPIRY CHECK ==================== */
+/* ==================== TOKEN EXPIRY ==================== */
 function checkTokenExpiry(){
-  // Simple check: store token update date and warn if > 25 days old
   const key='spTkAge_'+currentUser.uid;
   const age=localStorage.getItem(key);
   if(!age){localStorage.setItem(key,Date.now().toString());return;}
   const days=Math.floor((Date.now()-parseInt(age))/86400000);
   const warn=document.getElementById('tokenWarn');
-  const daysLeft=document.getElementById('tokenDaysLeft');
-  if(days>=25){warn.classList.remove('hidden');daysLeft.textContent=30-days;}
+  if(days>=25){warn.classList.remove('hidden');document.getElementById('tokenDaysLeft').textContent=30-days;}
   else{warn.classList.add('hidden');}
 }
 
 /* ==================== RECORD & HISTORY ==================== */
 function saveRecord(){
-  const dd=getDayData(),now=new Date();
-  const records={date:now.toLocaleDateString('zh-CN'),day:currentDay,phases:dd.phases.map(p=>({name:p.name,tasks:(p.tasks||[]).map(t=>({content:t.content,ok:t.ok,start:t.start,end:t.end,note:t.note||''}))}))};
-  historyData.push({...records,_ts:Date.now()});
+  const dd=getDayData(),n=new Date();
+  const rec={date:n.toLocaleDateString('zh-CN'),day:currentDay,phases:dd.phases.map(p=>({name:p.name,tasks:(p.tasks||[]).map(t=>({content:t.content,ok:t.ok,start:t.start,end:t.end,note:t.note||''}))}))};
+  historyData.push({...rec,_ts:Date.now()});
   saveHistory();
-  const completed=(dd.phases[0]?.tasks||[]).filter(t=>t.ok).length;
   const total=(dd.phases[0]?.tasks||[]).length;
-  toast(`✅ 已存档 ${completed}/${total} 项完成`);
+  const done=(dd.phases[0]?.tasks||[]).filter(t=>t.ok).length;
+  toast(`✅ 已存档 ${done}/${total} 项完成`);
+}
+function queryHistory(){
+  const from=document.getElementById('histFrom').value;
+  const to=document.getElementById('histTo').value;
+  const day=parseInt(document.getElementById('histDay').value);
+  const list=document.getElementById('historyList');
+  let filtered=historyData;
+  if(from)filtered=filtered.filter(r=>r.date>=from);
+  if(to)filtered=filtered.filter(r=>r.date<=to);
+  if(day)filtered=filtered.filter(r=>r.day===day);
+  if(filtered.length===0){list.innerHTML='<div style="text-align:center;color:var(--muted);padding:30px;">无历史记录</div>';return;}
+  list.innerHTML=filtered.slice(-50).reverse().map(r=>{
+    const done=(r.phases[0]?.tasks||[]).filter(t=>t.ok).length;
+    const total=(r.phases[0]?.tasks||[]).length;
+    return`<div class="hist-item"><span class="hist-date">${r.date}</span><span class="hist-day">周${DAY_NAMES[r.day-1]}</span><span class="hist-preview">${(r.phases[0]?.tasks||[]).map(t=>t.content||'(无内容)').join('、').substring(0,60)}</span><span class="hist-stats">${done}/${total} ✅</span></div>`;
+  }).join('');
+}
+function exportHistory(){
+  if(historyData.length===0){toast('⚠️ 无历史记录可导出');return;}
+  const blob=new Blob([JSON.stringify(historyData,null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`历史记录_${currentUser.name}_${new Date().toISOString().split('T')[0]}.json`;a.click();
+  toast('✅ 历史记录已导出');
+}
+function hmQuery(){
+  const from=document.getElementById('hmFrom').value;
+  const to=document.getElementById('hmTo').value;
+  const day=parseInt(document.getElementById('hmDay').value);
+  const list=document.getElementById('hmList');
+  let f=historyData;
+  if(from)f=f.filter(r=>r.date>=from);
+  if(to)f=f.filter(r=>r.date<=to);
+  if(day)f=f.filter(r=>r.day===day);
+  if(f.length===0){list.innerHTML='<div style="text-align:center;color:var(--muted);padding:30px;">无结果</div>';return;}
+  list.innerHTML=f.slice(-30).reverse().map(r=>`<div class="hist-item"><span class="hist-date">${r.date}</span><span class="hist-day">周${DAY_NAMES[r.day-1]}</span></div>`).join('');
 }
 
 /* ==================== STATS ==================== */
 function buildStatGrid(){
-  const grid=document.getElementById('statGrid');
-  const totalTasks=Object.values(planData).reduce((s,d)=>s+(d.phases||[]).reduce((ss,p)=>ss+(p.tasks||[]).length,0),0);
-  const doneTasks=Object.values(planData).reduce((s,d)=>s+(d.phases||[]).reduce((ss,p)=>ss+(p.tasks||[]).filter(t=>t.ok).length,0),0);
-  const histRecords=historyData.length;
-  const rate=totalTasks>0?Math.round(doneTasks/totalTasks*100):0;
-  grid.innerHTML=`<div class="stat-card"><div class="sc-num" style="color:var(--success)">${doneTasks}</div><div class="sc-lbl">已完成任务</div></div>
-    <div class="stat-card"><div class="sc-num" style="color:var(--warning)">${totalTasks-doneTasks}</div><div class="sc-lbl">待完成任务</div></div>
-    <div class="stat-card"><div class="sc-num">${histRecords}</div><div class="sc-lbl">历史存档</div></div>
+  const total=Object.values(planData).reduce((s,d)=>s+(d.phases||[]).reduce((ss,p)=>ss+(p.tasks||[]).length,0),0);
+  const done=Object.values(planData).reduce((s,d)=>s+(d.phases||[]).reduce((ss,p)=>ss+(p.tasks||[]).filter(t=>t.ok).length,0),0);
+  const rate=total>0?Math.round(done/total*100):0;
+  const grid=document.getElementById('statGrid2')||document.getElementById('statGrid');
+  if(!grid)return;
+  grid.innerHTML=`<div class="stat-card"><div class="sc-num" style="color:var(--success)">${done}</div><div class="sc-lbl">已完成</div></div>
+    <div class="stat-card"><div class="sc-num" style="color:var(--warning)">${total-done}</div><div class="sc-lbl">待完成</div></div>
+    <div class="stat-card"><div class="sc-num">${historyData.length}</div><div class="sc-lbl">历史存档</div></div>
     <div class="stat-card"><div class="sc-num" style="color:var(--primary-light)">${rate}%</div><div class="sc-lbl">完成率</div></div>`;
-  // Day breakdown
-  const chart=document.getElementById('statChart');
-  let chartHtml='<div style="font-size:14px;font-weight:700;margin-bottom:12px;">各天完成情况</div>';
-  for(let d=1;d<=7;d++){
-    const dd=planData[d];
-    const total=dd?(dd.phases||[]).reduce((s,p)=>s+(p.tasks||[]).length,0):0;
-    const done=dd?(dd.phases||[]).reduce((s,p)=>s+(p.tasks||[]).filter(t=>t.ok).length,0):0;
-    const pct=total>0?Math.round(done/total*100):0;
-    chartHtml+=`<div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-      <span style="width:30px;font-size:13px;color:var(--muted);">周${DAY_NAMES[d-1]}</span>
-      <div style="flex:1;height:10px;background:var(--surface2);border-radius:5px;overflow:hidden;">
-        <div style="width:${pct}%;height:100%;background:${done===total&&total>0?'var(--success)':pct>50?'var(--warning)':'var(--primary)'};border-radius:5px;transition:width 0.5s;"></div>
-      </div>
-      <span style="width:50px;font-size:12px;text-align:right;color:var(--muted);">${done}/${total}</span>
-    </div>`;
-  }
-  chart.innerHTML=chartHtml;
 }
 
 /* ==================== EXPORT / IMPORT ==================== */
-function exportData(){
+async function exportData(){
   const key=currentPwdHash||currentUser.token;
-  sEnc({planData,customCols,colOrder,colLabels,colWidths,historyData,exported:Date.now()},key).then(enc=>{
-    const blob=new Blob([JSON.stringify({user:currentUser.name,enc},null,2)],{type:'application/json'});
-    const a=document.createElement('a');a.href=URL.createObjectURL(blob);
-    a.download=`学习计划_${currentUser.name}_${new Date().toISOString().split('T')[0]}.json`;
-    a.click();toast('✅ 数据已导出');
-  });
+  const enc=await sEnc({planData,customCols,colOrder,colLabels,colWidths,historyData,exported:Date.now()},key);
+  const blob=new Blob([JSON.stringify({user:currentUser.name,enc},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download=`学习计划_${currentUser.name}_${new Date().toISOString().split('T')[0]}.json`;a.click();
+  toast('✅ 数据已导出');
 }
-function importData(event){
+async function importData(event){
   const file=event.target.files[0];if(!file)return;
-  const reader=new FileReader();reader.onload=async e=>{
+  const reader=new FileReader();
+  reader.onload=async e=>{
     try{
       const key=currentPwdHash||currentUser.token;
       const obj=JSON.parse(e.target.result);
       let data=obj;
-      if(obj.enc){try{data=await sDec(obj.enc,key);}catch{toast('❌ 解密失败，密码不对');return;}}
+      if(obj.enc)data=await sDec(obj.enc,key);
       planData=data.planData||{};customCols=data.customCols||[];colOrder=data.colOrder||[];colLabels=data.colLabels||{};colWidths=data.colWidths||{};
       if(data.historyData)historyData=data.historyData;
       saveData();saveColConfig();saveHistory();renderPlan();toast('✅ 导入成功');
-    }catch{toast('❌ 文件格式错误');}
-  };reader.readAsText(file);
-  event.target.value='';
+    }catch(e){toast('❌ 导入失败：'+e.message);}
+  };
+  reader.readAsText(file);event.target.value='';
 }
+
+/* ==================== COLUMN MANAGER ==================== */
+function renderColList(){
+  if(!currentUser){return;}
+  const cols=getAllCols(),tbody=document.getElementById('colMgrBody');
+  if(!tbody)return;
+  tbody.innerHTML='';
+  cols.forEach((col,i)=>{
+    const fixed=isFixedCol(col);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>
+      <button onclick="moveCol('${col.id}',-1)" ${i===0?'disabled':''} style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;">⬆</button>
+      <button onclick="moveCol('${col.id}',1)" ${i===cols.length-1?'disabled':''} style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;">⬇</button>
+    </td>
+    <td>${fixed?'<span style="color:var(--muted)">'+col.label+'</span>':'<input value="'+col.label+'" onchange="colLabels[\''+col.id+'\']=this.value;saveColConfig();renderColList();renderPlan();">'}</td>
+    <td>${TYPE_NAMES[col.type]||col.type}</td>
+    <td>${fixed?'<span style="color:var(--muted)">'+col.width+'</span>':'<input type="number" value="'+col.width+'" onchange="colWidths[\''+col.id+'\']=parseInt(this.value)||100;saveColConfig();renderPlan();">'}</td>
+    <td>${!fixed&&!col.builtin?'<button onclick="removeCustomCol(\''+col.id+'\')" class="phase-del" style="width:60px;">删除</button>':'<span style="color:var(--muted);font-size:12px;">固定</span>'}</td>`;
+    tbody.appendChild(tr);
+  });
+}
+function addCustomCol(){
+  const name=document.getElementById('newColName').value.trim();const type=document.getElementById('newColType').value;
+  if(!name){toast('⚠️ 请输入列名');return;}
+  const id='custom_'+Date.now();
+  customCols.push({id,label:name,type,width:120});
+  if(!colOrder.includes(id))colOrder.push(id);
+  saveColConfig();renderColList();renderPlan();toast('✅ 已添加列：'+name);
+  document.getElementById('newColName').value='';
+}
+function removeCustomCol(id){if(!confirm('删除该列？'))return;customCols=customCols.filter(c=>c.id!==id);colOrder=colOrder.filter(c=>c!==id);delete colLabels[id];delete colWidths[id];saveColConfig();renderColList();renderPlan();toast('已删除');}
+function moveCol(id,dir){const i=colOrder.indexOf(id);if(i<0)return;const ni=i+dir;if(ni<0||ni>=colOrder.length)return;[colOrder[i],colOrder[ni]]=[colOrder[ni],colOrder[i]];saveColConfig();renderColList();renderPlan();}
 
 /* ==================== VIEWS ==================== */
 function switchMainView(view){
-  ['plan','stats','hist'].forEach(v=>document.getElementById('view'+v.charAt(0).toUpperCase()+v.slice(1))?.classList.toggle('hidden',v!==view));
-  ['Plan','Stats','Hist'].forEach(v=>document.getElementById('sBtn'+v)?.classList.toggle('active',v.toLowerCase()==='plan'+view.charAt(0).toUpperCase()+view.slice(1)));
+  document.getElementById('viewPlan').classList.toggle('hidden',view!=='plan');
+  document.getElementById('viewStats').classList.toggle('hidden',view!=='stats');
+  document.getElementById('viewHist').classList.toggle('hidden',view!=='hist');
   document.querySelectorAll('.s-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sBtn'+view.charAt(0).toUpperCase()+view.slice(1))?.classList.add('active');
-  if(view==='stats'){document.getElementById('viewStats').innerHTML=document.getElementById('statGrid').parentElement.innerHTML;buildStatGrid();}
+  if(view==='plan')document.getElementById('sBtnPlan').classList.add('active');
+  if(view==='stats'){
+    document.getElementById('sBtnStats').classList.add('active');
+    document.getElementById('viewStats').innerHTML=`<h2 style="margin-bottom:16px;">📊 执行统计</h2><div class="stat-grid" id="statGrid2"></div><div style="font-size:13px;color:var(--muted);">各天完成情况</div><div id="dayChart"></div>`;
+    buildStatGrid();
+  }
+  if(view==='hist')document.getElementById('sBtnHist').classList.add('active');
 }
 function openSettings(){
   document.getElementById('sName').textContent=currentUser.name;
-  document.getElementById('sUID').textContent=currentUser.uid;
-  document.getElementById('sTokenStatus').innerHTML=currentUser.gistId?'<span style="color:var(--success)">✅ 已绑定 · <a href="'+currentUser.gistUrl+'" target="_blank" style="color:var(--primary-light)">查看Gist</a></span>':'<span style="color:var(--warning)">⚠️ 未绑定</span>';
-  document.getElementById('sSyncStatus').textContent=currentUser.gistId?'已连接云端同步':'未连接云端同步';
+  document.getElementById('sTokenStatus').innerHTML=currentUser.gistId?'<span style="color:var(--success)">✅ 已连接 · <a href="'+currentUser.gistUrl+'" target="_blank" style="color:var(--primary-light)">查看Gist</a></span>':'<span style="color:var(--warning)">⚠️ 未连接</span>';
+  document.getElementById('sSyncStatus').textContent=currentUser.gistId?'云端同步已就绪':'未连接云端';
   showModal('settingsModal');
 }
-function updateToken(){
+async function updateToken(){
   const tok=document.getElementById('sNewToken').value.trim();
   if(!tok.startsWith('ghp_')){document.getElementById('sTokenHint').textContent='⚠️ Token格式错误';return;}
-  document.getElementById('sTokenHint').textContent='⏳ 验证Token...';
-  fetch(GIST_API+'/'+currentUser.gistId,{headers:{"Authorization":"Bearer "+tok,"Accept":"application/vnd.github+json"}}).then(r=>{
+  document.getElementById('sTokenHint').textContent='⏳ 验证中...';
+  try{
+    const r=await fetch(GIST_API+'/'+currentUser.gistId,{headers:{"Authorization":"Bearer "+tok,"Accept":"application/vnd.github+json"}});
     if(!r.ok)throw new Error('Token无效');
     currentUser.token=tok;saveAccounts(accounts);
-    document.getElementById('sTokenHint').textContent='✅ Token已更新';
+    document.getElementById('sTokenHint').textContent='✅ Token已更新（30天后记得重新生成）';
     document.getElementById('sNewToken').value='';
-    toast('✅ Token已更新，30天后记得重新生成');
-  }).catch(e=>{document.getElementById('sTokenHint').textContent='❌ '+e.message;});
+    localStorage.setItem('spTkAge_'+currentUser.uid,Date.now().toString());
+    toast('✅ Token已更新');
+  }catch(e){document.getElementById('sTokenHint').textContent='❌ '+e.message;}
 }
 async function updatePwd(){
   const old=document.getElementById('sOldPwd').value,npw=document.getElementById('sNewPwd').value,npw2=document.getElementById('sNewPwd2').value;
   const hint=document.getElementById('sPwdHint');
-  if(!currentUser.pwdHash){hint.textContent='⚠️ 当前账户未设密码';return;}
-  if(await hashPwd(old)!==currentUser.pwdHash){hint.textContent='❌ 旧密码错误';return;}
-  if(npw.length<4){hint.textContent='⚠️ 新密码至少4位';return;}
+  if(old&&currentUser.pwdHash){if(await hashPwd(old)!==currentUser.pwdHash){hint.textContent='❌ 旧密码错误';return;}}
+  if(npw&&npw.length<4){hint.textContent='⚠️ 新密码至少4位';return;}
   if(npw!==npw2){hint.textContent='⚠️ 两次不一致';return;}
-  currentUser.pwdHash=await hashPwd(npw);currentPwdHash=currentUser.pwdHash;
+  currentUser.pwdHash=npw?await hashPwd(npw):'';
+  currentPwdHash=currentUser.pwdHash||'';
   saveAccounts(accounts);hint.textContent='✅ 密码已修改';
   document.getElementById('sOldPwd').value='';document.getElementById('sNewPwd').value='';document.getElementById('sNewPwd2').value='';
 }
@@ -938,44 +990,29 @@ async function updatePwd(){
 /* ==================== MISC ==================== */
 function showModal(id){document.getElementById(id).classList.remove('hidden');}
 function closeModal(id){document.getElementById(id).classList.add('hidden');}
-function closeAllModals(){$('.modal-overlay').classList.add('hidden');}
-function toast(msg,err=false){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.toggle('error',err);t.classList.remove('hidden');
-  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.add('hidden'),3000);
-}
-function changeFS(d){fsVal=Math.max(12,Math.min(22,fsVal+d));document.documentElement.style.setProperty('--fs',fsVal+'px');document.getElementById('fsLabel').textContent=fsVal;localStorage.setItem('spFS_'+currentUser.uid,fsVal);}
-function queryHistory(){} // placeholder for inline hist
-function hmQuery(){} // placeholder
-function exportHistory(){} // placeholder
-function sortByCol(col){}
+function closeAllModals(){document.querySelectorAll('.modal-overlay').forEach(m=>m.classList.add('hidden'));}
+function toast(msg,err=false){const t=document.getElementById('toast');t.textContent=msg;t.classList.toggle('error',err);t.classList.remove('hidden');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.add('hidden'),3000);}
+function changeFS(d){fsVal=Math.max(12,Math.min(22,fsVal+d));document.documentElement.style.setProperty('--fs',fsVal+'px');document.getElementById('fsLabel').textContent=fsVal;if(currentUser)localStorage.setItem('spFS_'+currentUser.uid,fsVal);}
 
-/* ==================== SPEECH ==================== */
-if('speechSynthesis'in window){speechOk=true;}
+document.addEventListener('click',e=>{
+  const chip=document.getElementById('userChip');
+  const menu=document.getElementById('userMenu');
+  if(chip&&!chip.contains(e.target)&&menu&&!menu.contains(e.target))menu.classList.add('hidden');
+});
+if('speechSynthesis'in window){
+  speechOk=true;
+  speechSynthesis.onvoiceschanged=()=>{};
+}
 
 /* ==================== BOOT ==================== */
 document.addEventListener('DOMContentLoaded',()=>{
   boot();
-  // Font size label
-  document.getElementById('fsLabel').textContent=fsVal;
-  // Alarm toggle
-  document.getElementById('alarmToggle').addEventListener('change',function(){
-    alarmEnabled=this.checked;localStorage.setItem('spAlarm_'+currentUser.uid,alarmEnabled?'1':'0');
+  document.getElementById('alarmToggle').addEventListener('change',function(){alarmEnabled=this.checked;if(currentUser)localStorage.setItem('spAlarm_'+currentUser.uid,alarmEnabled?'1':'0');});
+  document.getElementById('volSlider').addEventListener('change',function(){volume=parseFloat(this.value);if(currentUser)localStorage.setItem('spVol_'+currentUser.uid,volume);});
+  // also wire up header buttons
+  document.querySelectorAll('.hbtn').forEach(btn=>{
+    if(btn.onclick&&btn.onclick.toString().includes('showModal'))return;
   });
-  // Volume
-  document.getElementById('volSlider').addEventListener('change',function(){
-    volume=parseFloat(this.value);localStorage.setItem('spVol_'+currentUser.uid,volume);
-  });
-  // Close user menu on outside click
-  document.addEventListener('click',e=>{
-    const chip=document.getElementById('userChip');
-    const menu=document.getElementById('userMenu');
-    if(chip&&!chip.contains(e.target)&&menu&&!menu.contains(e.target))menu.classList.add('hidden');
-  });
-  // Check speech
-  if(speechOk){
-    speechSynthesis.onvoiceschanged=()=>{const zh=speechSynthesis.getVoices().find(v=>v.lang.startsWith('zh'));if(zh){/* voice available */}};
-  }
 });
 </script>
 </body>
