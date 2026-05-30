@@ -464,7 +464,31 @@ async function sDec(o,pwd){const k=await dk(pwd,b2a(o.s)),pt=await crypto.subtle
 async function hashPwd(p){return sha256(p);}
 
 /* ==================== AUTH ==================== */
-let accounts = []; // [{uid, name, token, pwdHash, gistId, gistUrl}]
+let accounts = [
+  {uid:'xxjhzs-1',name:'爸爸',token:'',pwdHash:'',gistId:'7982a2735c2f9755b15dadc4b5d03a70',gistUrl:'https://gist.github.com/gityqy/7982a2735c2f9755b15dadc4b5d03a70',created:Date.now()},
+  {uid:'xxjhzs-2',name:'孩子',token:'',pwdHash:'',gistId:'0fedb08f8b9d7ca87c52f999e18eab5f',gistUrl:'https://gist.github.com/gityqy/0fedb08f8b9d7ca87c52f999e18eab5f',created:Date.now()},
+  {uid:'xxjhzs-3',name:'xxjhzs-3',token:'',pwdHash:'',gistId:'b6b9a5e2f17fd70495c933c03d43605f',gistUrl:'https://gist.github.com/gityqy/b6b9a5e2f17fd70495c933c03d43605f',created:Date.now()},
+  {uid:'xxjhzs-4',name:'xxjhzs-4',token:'',pwdHash:'',gistId:'76ae21e6e743e53ba3a61448848522c9',gistUrl:'https://gist.github.com/gityqy/76ae21e6e743e53ba3a61448848522c9',created:Date.now()},
+  {uid:'xxjhzs-5',name:'xxjhzs-5',token:'',pwdHash:'',gistId:'9388a63029bf4820ff7a8518f5bad94e',gistUrl:'https://gist.github.com/gityqy/9388a63029bf4820ff7a8518f5bad94e',created:Date.now()},
+  {uid:'xxjhzs-6',name:'xxjhzs-6',token:'',pwdHash:'',gistId:'3ef0a4897c1831506bdd423008a27d41',gistUrl:'https://gist.github.com/gityqy/3ef0a4897c1831506bdd423008a27d41',created:Date.now()},
+];
+// Save accounts to localStorage on first load
+(function saveDefaultAccts(){
+  const stored=localStorage.getItem('spAccts');
+  if(!stored||stored==='[]'||stored===''||stored===null){
+    localStorage.setItem('spAccts',JSON.stringify(accounts));
+  } else {
+    // Merge: keep existing accounts, add missing ones from default list
+    try{
+      const existing=JSON.parse(stored);
+      const existingUIDs=new Set(existing.map(a=>a.uid));
+      accounts.forEach(defAcct=>{
+        if(!existingUIDs.has(defAcct.uid))existing.push(defAcct);
+      });
+      localStorage.setItem('spAccts',JSON.stringify(existing));
+    }catch(e){localStorage.setItem('spAccts',JSON.stringify(accounts));}
+  }
+})();
 let currentUser = null;
 let currentPwdHash = null;
 
